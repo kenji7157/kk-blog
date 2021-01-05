@@ -40,4 +40,11 @@ create-nuxt-app v3.4.0
 npm run dev
 ```
 
-※モノレポの作りにしているのでapps配下のgit管理は上位ディレクトリに合わせるよう修正 
+※モノレポの作りにしているのでapps配下のgit管理は上位ディレクトリに合わせるよう修正
+
+## appsディレクトリで
+- nuxt-property-decoratorの導入
+  - デコレータを利用してコンポーネントを記述する
+```
+npm install --save nuxt-property-decorator
+```

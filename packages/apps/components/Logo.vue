@@ -6,6 +6,12 @@
     <div class="Triangle Triangle--four" />
   </div>
 </template>
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
+
+@Component
+export default class Logo extends Vue {}
+</script>
 
 <style>
 .VueToNuxtLogo {

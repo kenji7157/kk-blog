@@ -9,66 +9,13 @@
           Welcome to the Vuetify + Nuxt.js template
         </v-card-title>
         <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation </a
-            >.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord </a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board </a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
+          <div v-for="(content, index) in contents" :key="index" class="origin">
+            <hr />
+            作成日：{{ content.createdAt }} <br />
+            タイトル：{{ content.title }} <br />
+            本文：{{ content.body }} <br />
+            カテゴリ：{{ content.category.join('/') }}
           </div>
-          <hr class="my-3" />
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br />
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
         </v-card-text>
         <v-card-actions>
           <v-spacer />
@@ -81,6 +28,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+import axios from 'axios'
 import Logo from '~/components/Logo.vue'
 
 @Component({
@@ -88,5 +36,19 @@ import Logo from '~/components/Logo.vue'
     Logo,
   },
 })
-export default class PagesIndex extends Vue {}
+export default class PagesIndex extends Vue {
+  async asyncData() {
+    const res = await axios.get(
+      // your-service-id部分は自分のサービスidに置き換えてください
+      'https://kk-nuxt-blog.microcms.io/api/v1/article',
+      {
+        // your-api-key部分は自分のapi-keyに置き換えてください
+        headers: { 'X-API-KEY': '63a41b21-d7d6-4bdb-a1f5-3f9e5865f71b' },
+      }
+    )
+    const contents = res.data.contents
+    console.log('dataの確認', res.data.contents)
+    return { contents }
+  }
+}
 </script>

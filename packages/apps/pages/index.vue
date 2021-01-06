@@ -37,8 +37,7 @@ import { articleModule } from '~/store'
   },
 })
 export default class PagesIndex extends Vue {
-  async asyncData() {
-    await articleModule.loadArticles()
+  asyncData() {
     const contents = articleModule.articles
     return { contents }
   }

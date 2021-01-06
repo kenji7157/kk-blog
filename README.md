@@ -52,3 +52,6 @@ npm install --save nuxt-property-decorator
 ## WF
 - FigamaでWFを作成
 https://www.figma.com/file/VCOPYhlLWG18MMXkbGgUiU/%E3%83%96%E3%83%AD%E3%82%B0%E3%82%B5%E3%82%A4%E3%83%88?node-id=6%3A2
+
+## vuexにて vuex-module-decoratorsの導入
+参考記事：https://qiita.com/suzukenz/items/0b5c0eb5196646599377

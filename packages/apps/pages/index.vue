@@ -28,8 +28,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import axios from 'axios'
 import Logo from '~/components/Logo.vue'
+import { articleModule } from '~/store'
 
 @Component({
   components: {
@@ -38,16 +38,8 @@ import Logo from '~/components/Logo.vue'
 })
 export default class PagesIndex extends Vue {
   async asyncData() {
-    const res = await axios.get(
-      // your-service-id部分は自分のサービスidに置き換えてください
-      'https://kk-nuxt-blog.microcms.io/api/v1/article',
-      {
-        // your-api-key部分は自分のapi-keyに置き換えてください
-        headers: { 'X-API-KEY': '63a41b21-d7d6-4bdb-a1f5-3f9e5865f71b' },
-      }
-    )
-    const contents = res.data.contents
-    console.log('dataの確認', res.data.contents)
+    await articleModule.loadArticles()
+    const contents = articleModule.articles
     return { contents }
   }
 }

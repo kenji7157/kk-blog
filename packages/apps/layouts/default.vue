@@ -85,7 +85,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer> -->
-    <v-footer :absolute="!fixed" app>
+    <v-footer fixed app>
       <span>NAGANO ENGINEER LIFE © kenji kawanobe 2021</span>
     </v-footer>
   </v-app>

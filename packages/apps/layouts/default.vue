@@ -68,7 +68,8 @@
     </v-navigation-drawer>
     <v-main>
       <v-container>
-        <nuxt />
+        <!-- nuxt-child-key="$route.fullPath" の指定でクエリのサイレンダリングが実行される -->
+        <nuxt :nuxt-child-key="$route.fullPath" />
       </v-container>
     </v-main>
     <!-- <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
@@ -109,7 +110,7 @@ export default {
       miniVariant: false,
       right: true,
       // rightDrawer: false,
-      title: 'NAGANO ENGINEER LIFE',
+      title: 'prcatice site',
     }
   },
 }

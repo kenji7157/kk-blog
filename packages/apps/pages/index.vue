@@ -30,7 +30,12 @@
     </v-row>
     <v-row class="mt-3">
       <div class="text-center">
-        <v-pagination v-model="page" :length="20" circle></v-pagination>
+        <v-pagination
+          v-model="page"
+          :length="pageLength"
+          circle
+          @input="inputPage"
+        ></v-pagination>
       </div>
     </v-row>
   </v-container>
@@ -44,12 +49,19 @@ import { articleModule } from '@/store'
 export default class PagesIndex extends Vue {
   page = 1
   asyncData() {
-    const contents = Object.values(articleModule.articles).slice(0, 6)
-    return { contents }
+    const allContents = Object.values(articleModule.articles)
+    const contents = allContents.slice(0, 6)
+    const pageLength = Math.ceil(allContents.length / 6)
+    return { contents, pageLength }
   }
 
   onArticle(id: string) {
     this.$router.push(`/article/${id}`)
+  }
+
+  inputPage(inputPage: number) {
+    if (inputPage === 1) return
+    this.$router.push({ path: '/archive', query: { page: String(inputPage) } })
   }
 }
 </script>

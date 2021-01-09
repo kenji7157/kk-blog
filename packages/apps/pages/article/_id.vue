@@ -38,11 +38,10 @@ type Article = {
 
 @Component
 export default class ArticleId extends Vue {
-  article: Partial<Article> = {}
-
-  mounted() {
-    const id = this.$route.params.id
-    this.article = articleModule.articles[id]
+  asyncData({ route }) {
+    const id = route.params.id
+    const article: Article = articleModule.articles[id]
+    return { article }
   }
 }
 </script>

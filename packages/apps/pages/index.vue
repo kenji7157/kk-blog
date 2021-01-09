@@ -1,16 +1,17 @@
 <template>
   <v-container>
     <v-row>
-      <v-col class="mt-n4 ml-n2"> トップページ </v-col>
-    </v-row>
-    <v-row class="mt-1">
       <v-col
         v-for="(content, index) in contents"
         :key="index"
         class="pa-1"
         cols="4"
       >
-        <v-card height="300" class="d-flex flex-column">
+        <v-card
+          height="300"
+          class="d-flex flex-column"
+          @click="onArticle(content.id)"
+        >
           <v-img
             max-height="180"
             src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
@@ -41,10 +42,14 @@ import { articleModule } from '@/store'
 
 @Component
 export default class PagesIndex extends Vue {
-  page: 1
+  page = 1
   asyncData() {
-    const contents = articleModule.articles.slice(0, 6)
+    const contents = Object.values(articleModule.articles).slice(0, 6)
     return { contents }
+  }
+
+  onArticle(id: string) {
+    this.$router.push(`/article/${id}`)
   }
 }
 </script>

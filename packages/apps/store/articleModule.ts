@@ -2,7 +2,8 @@ import { VuexModule, Module, Mutation, Action } from 'vuex-module-decorators'
 import axios from 'axios'
 
 type Article = {
-  id?: number
+  // idはkeyとなっているのでフィールドとしては不要かも
+  id: number
   title: string
   body: string
   categroy: string[]
@@ -10,11 +11,12 @@ type Article = {
 
 @Module({ stateFactory: true, namespaced: true, name: 'articleModule' })
 export default class ArticleModule extends VuexModule {
-  articles: Article[] = []
+  articles: { [id: string]: Article } = {}
 
   @Mutation
   addPost(article: Article) {
-    this.articles = [...this.articles, article]
+    // this.articles = [...this.articles, article]
+    this.articles[article.id] = article
   }
 
   @Action

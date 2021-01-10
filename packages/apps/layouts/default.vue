@@ -93,25 +93,25 @@ import { Component, Vue } from 'nuxt-property-decorator'
 
 @Component
 export default class DefaultLayout extends Vue {
-  clipped: true
-  drawer: false
-  fixed: false
-  items: [
-    {
-      icon: 'mdi-apps'
-      title: 'Welcome'
-      to: '/'
-    },
-    {
-      icon: 'mdi-chart-bubble'
-      title: 'Inspire'
-      to: '/inspire'
-    }
-  ]
+  clipped = true
+  drawer = false
+  fixed = false
+  // items = [
+  //   {
+  //     icon: 'mdi-apps',
+  //     title: 'Welcome',
+  //     to: '/',
+  //   },
+  //   {
+  //     icon: 'mdi-chart-bubble',
+  //     title: 'Inspire',
+  //     to: '/inspire',
+  //   },
+  // ]
 
-  miniVariant: false
-  right: true
+  miniVariant = false
+  right = true
   // rightDrawer: false,
-  title: 'prcatice site'
+  title = 'prcatice site'
 }
 </script>

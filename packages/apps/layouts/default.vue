@@ -29,6 +29,7 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>プロフィール</v-list-item-title>
+            <hr />
             <v-avatar class="my-2" size="86px" style="overflow: unset">
               <img class="mr-auto" src="https://placehold.jp/150x150.png" />
             </v-avatar>
@@ -38,16 +39,59 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>アーカイブ</v-list-item-title>
+            <hr />
+            <v-list-group>
+              <template v-slot:activator>
+                <v-list-item-title>2020 (56)</v-list-item-title>
+              </template>
+              <v-list-item class="ml-5" link>
+                <v-list-item-content>
+                  <span>2020 / 12 (1)</span>
+                </v-list-item-content>
+              </v-list-item>
+              <v-list-item class="ml-5" link>
+                <v-list-item-content>
+                  <span>2020 / 11 (1)</span>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-group>
+            <v-list-group>
+              <template v-slot:activator>
+                <v-list-item-title>2019 (56)</v-list-item-title>
+              </template>
+              <v-list-item class="ml-5" link>
+                <v-list-item-content>
+                  <span>2019 / 12 (1)</span>
+                </v-list-item-content>
+              </v-list-item>
+              <v-list-item class="ml-5" link>
+                <v-list-item-content>
+                  <span>2019 / 11 (1)</span>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-group>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>カテゴリー</v-list-item-title>
+            <hr />
+            <v-list-item link>
+              <v-list-item-content>
+                <span>長野 (1)</span>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item link>
+              <v-list-item-content>
+                <span>プログラミング (1)</span>
+              </v-list-item-content>
+            </v-list-item>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>検索</v-list-item-title>
+            <hr />
           </v-list-item-content>
         </v-list-item>
         <!-- <v-list-item

@@ -4,6 +4,9 @@
       <h3>
         <nuxt-link :to="'/'">トップページ</nuxt-link>
         <v-icon class="mb-1">mdi-chevron-right</v-icon>
+        <!-- カテゴリーをクリックするとカテゴリーで抽出された一覧ページを表示したい -->
+        {{ article.category[0] }}
+        <v-icon class="mb-1">mdi-chevron-right</v-icon>
         {{ article.title }}
       </h3>
     </v-row>

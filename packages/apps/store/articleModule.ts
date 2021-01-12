@@ -1,5 +1,10 @@
 import { VuexModule, Module, Mutation, Action } from 'vuex-module-decorators'
 import axios from 'axios'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 type Article = {
   // idはkeyとなっているのでフィールドとしては不要かも
@@ -7,6 +12,14 @@ type Article = {
   title: string
   body: string
   categroy: string[]
+  createdDate: string
+  createdTimestamp: {
+    unix: number
+    year: number
+    // 0~11 表示する場合は+1する
+    month: number
+    day: number
+  }
 }
 
 @Module({ stateFactory: true, namespaced: true, name: 'articleModule' })
@@ -16,6 +29,13 @@ export default class ArticleModule extends VuexModule {
   @Mutation
   addPost(article: Article) {
     // this.articles = [...this.articles, article]
+    const dayInfo = dayjs.utc(article.createdDate).tz('Asia/Tokyo')
+    article.createdTimestamp = {
+      unix: dayInfo.unix(),
+      year: dayInfo.year(),
+      month: dayInfo.month(),
+      day: dayInfo.date(),
+    }
     this.articles[article.id] = article
   }
 

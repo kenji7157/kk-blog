@@ -40,33 +40,29 @@
           <v-list-item-content>
             <v-list-item-title>アーカイブ</v-list-item-title>
             <hr />
-            <v-list-group>
+            <v-list-group
+              v-for="(archive, i) in archiveList"
+              :key="i"
+              sub-group
+              class="ml-n8"
+            >
               <template v-slot:activator>
-                <v-list-item-title>2020 (56)</v-list-item-title>
+                <v-list-item-title>
+                  {{ `${archive.year} ( ${archive.length} )` }}
+                </v-list-item-title>
               </template>
-              <v-list-item class="ml-5" link>
+              <v-list-item
+                v-for="(monthObj, j) in archive.monthObjList"
+                :key="j"
+                class="ml-5"
+                link
+              >
                 <v-list-item-content>
-                  <span>2020 / 12 (1)</span>
-                </v-list-item-content>
-              </v-list-item>
-              <v-list-item class="ml-5" link>
-                <v-list-item-content>
-                  <span>2020 / 11 (1)</span>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list-group>
-            <v-list-group>
-              <template v-slot:activator>
-                <v-list-item-title>2019 (56)</v-list-item-title>
-              </template>
-              <v-list-item class="ml-5" link>
-                <v-list-item-content>
-                  <span>2019 / 12 (1)</span>
-                </v-list-item-content>
-              </v-list-item>
-              <v-list-item class="ml-5" link>
-                <v-list-item-content>
-                  <span>2019 / 11 (1)</span>
+                  <span class="ml-8">{{
+                    `${archive.year} / ${monthObj.month + 1} (${
+                      monthObj.length
+                    })`
+                  }}</span>
                 </v-list-item-content>
               </v-list-item>
             </v-list-group>
@@ -134,9 +130,81 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+import { articleModule } from '@/store'
 
 @Component
 export default class DefaultLayout extends Vue {
+  // Articleを要素にもつ配列
+  allContents = []
+  // NOTE:配列を要素にもつ配列
+  archiveList: {
+    year: number
+    length: number
+    monthObjList: { month: number; length: number }[]
+  }[] = []
+  // NOTE: layout配下のコンポーネントはasyncDataメソッドが未定義
+  // asyncData()
+
+  created() {
+    this.allContents = Object.values(articleModule.articles)
+    // 本当はarticleModuleでgetter定義した方がいい
+    // 作成日が新しいのが先頭に来るようにソートをかける
+    this.allContents.sort(function (a, b) {
+      if (a.createdTimestamp.unix < b.createdTimestamp.unix) {
+        return 1
+      } else {
+        return -1
+      }
+    })
+    let preYear = this.allContents[0].createdTimestamp.year
+    let preMonth = this.allContents[0].createdTimestamp.month
+    let archive: {
+      year: number
+      length: number
+      monthObjList: { month: number; length: number }[]
+    } = {
+      year: preYear,
+      length: 0,
+      monthObjList: [],
+    }
+    let monthObj = {
+      month: preMonth,
+      length: 0,
+    }
+    this.allContents.forEach((content, index) => {
+      const year = content.createdTimestamp.year
+      const month = content.createdTimestamp.month
+      if (preYear === year) {
+        archive.length++
+        if (preMonth === month) {
+          monthObj.length++
+        } else {
+          archive.monthObjList.push(monthObj)
+          preMonth = month
+          monthObj = {
+            month: preMonth,
+            length: 1,
+          }
+        }
+      } else {
+        archive.monthObjList.push(monthObj)
+        this.archiveList.push(archive)
+        preYear = year
+        preMonth = month
+        archive = { year: preYear, length: 1, monthObjList: [] }
+        monthObj = {
+          month: preMonth,
+          length: 1,
+        }
+      }
+
+      if (index === this.allContents.length - 1) {
+        archive.monthObjList.push(monthObj)
+        this.archiveList.push(archive)
+      }
+    })
+  }
+
   clipped = true
   drawer = false
   fixed = false

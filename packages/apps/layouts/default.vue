@@ -134,87 +134,13 @@ import { articleModule } from '@/store'
 
 @Component
 export default class DefaultLayout extends Vue {
-  // Articleを要素にもつ配列
-  allContents = []
-  // NOTE:配列を要素にもつ配列
-  archiveList: {
-    year: number
-    length: number
-    perMonthList: { month: number; length: number }[]
-  }[] = []
   // NOTE: layout配下のコンポーネントはasyncDataメソッドが未定義
   // asyncData()
 
-  created() {
-    this.allContents = Object.values(articleModule.articles)
-    // 本当はarticleModuleでgetter定義した方がいい
-    // 作成日が新しいのが先頭に来るようにソートをかける
-    this.allContents.sort(function (a, b) {
-      if (a.createdTimestamp.unix < b.createdTimestamp.unix) {
-        return 1
-      } else {
-        return -1
-      }
-    })
-    let preYear = this.allContents[0].createdTimestamp.year
-    let preMonth = this.allContents[0].createdTimestamp.month
-    let archive: {
-      year: number
-      length: number
-      perMonthList: { month: number; length: number }[]
-    } = {
-      year: preYear,
-      length: 0,
-      perMonthList: [],
-    }
-    let perMonth = {
-      month: preMonth,
-      length: 0,
-    }
-    this.allContents.forEach((content, index) => {
-      const year = content.createdTimestamp.year
-      const month = content.createdTimestamp.month
-      if (preYear === year) {
-        // 年が等しい場合 -> 年単位記事数をインクリメント
-        archive.length++
-        if (preMonth === month) {
-          // 月が等しい場合 -> 年月単位記事数をインクリメント
-          perMonth.length++
-        } else {
-          // 年が等しい かつ 月が等しくない 場合 ->
-          // perMonthListに代入する
-          archive.perMonthList.push(perMonth)
-          // perMonthの初期化
-          preMonth = month
-          perMonth = {
-            month: preMonth,
-            length: 1,
-          }
-        }
-      } else {
-        // 年が等しくない場合
-        // perMonthListに代入する
-        archive.perMonthList.push(perMonth)
-        // 続けてarchiveListに代入する
-        this.archiveList.push(archive)
-        // archive/perMonthの初期化
-        preYear = year
-        preMonth = month
-        archive = { year: preYear, length: 1, perMonthList: [] }
-        perMonth = {
-          month: preMonth,
-          length: 1,
-        }
-      }
+  created() {}
 
-      if (index === this.allContents.length - 1) {
-        // 最終要素の場合
-        // perMonthListに代入する
-        archive.perMonthList.push(perMonth)
-        // 続けてarchiveListに代入する
-        this.archiveList.push(archive)
-      }
-    })
+  get archiveList() {
+    return articleModule.getArchiveList
   }
 
   clipped = true

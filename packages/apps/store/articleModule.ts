@@ -6,6 +6,7 @@ import timezone from 'dayjs/plugin/timezone'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
+// TODO: 型定義したファイルを用意する
 type Article = {
   // idはkeyとなっているのでフィールドとしては不要かも
   id: number
@@ -24,7 +25,90 @@ type Article = {
 
 @Module({ stateFactory: true, namespaced: true, name: 'articleModule' })
 export default class ArticleModule extends VuexModule {
-  articles: { [id: string]: Article } = {}
+  private articles: { [id: string]: Article } = {}
+
+  // アーカイブ用のリストゲッター
+  public get getArchiveList() {
+    const allContents = Object.values(this.articles)
+    // 作成日が新しいのが先頭に来るようにソートをかける
+    allContents.sort(function (a, b) {
+      if (a.createdTimestamp.unix < b.createdTimestamp.unix) {
+        return 1
+      } else {
+        return -1
+      }
+    })
+    // 初期変数の準備
+    let preYear = allContents[0].createdTimestamp.year
+    let preMonth = allContents[0].createdTimestamp.month
+    let archive: {
+      year: number
+      length: number
+      perMonthList: { month: number; length: number }[]
+    } = {
+      year: preYear,
+      length: 0,
+      perMonthList: [],
+    }
+    let perMonth = {
+      month: preMonth,
+      length: 0,
+    }
+    // NOTE:配列を要素にもつ配列
+    const archiveList: {
+      year: number
+      length: number
+      perMonthList: {
+        month: number
+        length: number
+      }[]
+    }[] = []
+
+    allContents.forEach((content, index) => {
+      const year = content.createdTimestamp.year
+      const month = content.createdTimestamp.month
+      if (preYear === year) {
+        // 年が等しい場合 -> 年単位記事数をインクリメント
+        archive.length++
+        if (preMonth === month) {
+          // 月が等しい場合 -> 年月単位記事数をインクリメント
+          perMonth.length++
+        } else {
+          // 年が等しい かつ 月が等しくない 場合 ->
+          // perMonthListに代入する
+          archive.perMonthList.push(perMonth)
+          // perMonthの初期化
+          preMonth = month
+          perMonth = {
+            month: preMonth,
+            length: 1,
+          }
+        }
+      } else {
+        // 年が等しくない場合
+        // perMonthListに代入する
+        archive.perMonthList.push(perMonth)
+        // 続けてarchiveListに代入する
+        archiveList.push(archive)
+        // archive/perMonthの初期化
+        preYear = year
+        preMonth = month
+        archive = { year: preYear, length: 1, perMonthList: [] }
+        perMonth = {
+          month: preMonth,
+          length: 1,
+        }
+      }
+      // 最終要素の場合
+      if (index === allContents.length - 1) {
+        // perMonthListに代入する
+        archive.perMonthList.push(perMonth)
+        // 続けてarchiveListに代入する
+        archiveList.push(archive)
+      }
+    })
+    return archiveList
+  }
 
   @Mutation
   addPost(article: Article) {

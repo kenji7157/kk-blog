@@ -41,7 +41,7 @@
             <v-list-item-title>アーカイブ</v-list-item-title>
             <hr />
             <v-list-group
-              v-for="(archive, i) in archiveList"
+              v-for="(archive, i) in archiveArticleList"
               :key="i"
               sub-group
               class="ml-n8"
@@ -72,14 +72,13 @@
           <v-list-item-content>
             <v-list-item-title>カテゴリー</v-list-item-title>
             <hr />
-            <v-list-item link>
+            <v-list-item
+              v-for="(archive, i) in categoryArticleList"
+              :key="i"
+              link
+            >
               <v-list-item-content>
-                <span>長野 (1)</span>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item link>
-              <v-list-item-content>
-                <span>プログラミング (1)</span>
+                <span>{{ `${archive.category} ( ${archive.length} )` }}</span>
               </v-list-item-content>
             </v-list-item>
           </v-list-item-content>
@@ -139,8 +138,12 @@ export default class DefaultLayout extends Vue {
 
   created() {}
 
-  get archiveList() {
-    return articleModule.getArchiveList
+  get archiveArticleList() {
+    return articleModule.getArchiveArticleList
+  }
+
+  get categoryArticleList() {
+    return articleModule.getCategoryArticleList
   }
 
   clipped = true

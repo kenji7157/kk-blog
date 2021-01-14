@@ -36,7 +36,7 @@ type Article = {
   id: number
   title: string
   body: string
-  categroy: string[]
+  category: string[]
 }
 
 @Component

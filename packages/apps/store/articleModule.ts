@@ -12,7 +12,7 @@ type Article = {
   id: number
   title: string
   body: string
-  categroy: string[]
+  category: string[]
   createdDate: string
   createdTimestamp: {
     unix: number
@@ -28,7 +28,7 @@ export default class ArticleModule extends VuexModule {
   private articles: { [id: string]: Article } = {}
 
   // アーカイブ用のリストゲッター
-  public get getArchiveList() {
+  public get getArchiveArticleList() {
     const allContents = Object.values(this.articles)
     // 作成日が新しいのが先頭に来るようにソートをかける
     allContents.sort(function (a, b) {
@@ -108,6 +108,32 @@ export default class ArticleModule extends VuexModule {
       }
     })
     return archiveList
+  }
+
+  // カテゴリ用のリストゲッター
+  public get getCategoryArticleList() {
+    const allContents = Object.values(this.articles)
+    const categoryObj: { [key: string]: number } = {}
+    allContents.forEach((content) => {
+      content.category.forEach((key) => {
+        categoryObj[key] = categoryObj[key] ? categoryObj[key] + 1 : 1
+      })
+    })
+
+    const categoryList: { category: string; length: number }[] = []
+    Object.keys(categoryObj).forEach((key) => {
+      categoryList.push({ category: key, length: categoryObj[key] })
+    })
+
+    // カテゴリー名で昇順ソートをかける
+    categoryList.sort(function (a, b) {
+      if (a.category < b.category) {
+        return -1
+      } else {
+        return 1
+      }
+    })
+    return categoryList
   }
 
   @Mutation

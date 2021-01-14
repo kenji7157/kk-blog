@@ -52,15 +52,15 @@
                 </v-list-item-title>
               </template>
               <v-list-item
-                v-for="(monthObj, j) in archive.monthObjList"
+                v-for="(perMonth, j) in archive.perMonthList"
                 :key="j"
                 class="ml-5"
                 link
               >
                 <v-list-item-content>
                   <span class="ml-8">{{
-                    `${archive.year} / ${monthObj.month + 1} (${
-                      monthObj.length
+                    `${archive.year} / ${perMonth.month + 1} (${
+                      perMonth.length
                     })`
                   }}</span>
                 </v-list-item-content>
@@ -140,7 +140,7 @@ export default class DefaultLayout extends Vue {
   archiveList: {
     year: number
     length: number
-    monthObjList: { month: number; length: number }[]
+    perMonthList: { month: number; length: number }[]
   }[] = []
   // NOTE: layout配下のコンポーネントはasyncDataメソッドが未定義
   // asyncData()
@@ -161,13 +161,13 @@ export default class DefaultLayout extends Vue {
     let archive: {
       year: number
       length: number
-      monthObjList: { month: number; length: number }[]
+      perMonthList: { month: number; length: number }[]
     } = {
       year: preYear,
       length: 0,
-      monthObjList: [],
+      perMonthList: [],
     }
-    let monthObj = {
+    let perMonth = {
       month: preMonth,
       length: 0,
     }
@@ -175,31 +175,43 @@ export default class DefaultLayout extends Vue {
       const year = content.createdTimestamp.year
       const month = content.createdTimestamp.month
       if (preYear === year) {
+        // 年が等しい場合 -> 年単位記事数をインクリメント
         archive.length++
         if (preMonth === month) {
-          monthObj.length++
+          // 月が等しい場合 -> 年月単位記事数をインクリメント
+          perMonth.length++
         } else {
-          archive.monthObjList.push(monthObj)
+          // 年が等しい かつ 月が等しくない 場合 ->
+          // perMonthListに代入する
+          archive.perMonthList.push(perMonth)
+          // perMonthの初期化
           preMonth = month
-          monthObj = {
+          perMonth = {
             month: preMonth,
             length: 1,
           }
         }
       } else {
-        archive.monthObjList.push(monthObj)
+        // 年が等しくない場合
+        // perMonthListに代入する
+        archive.perMonthList.push(perMonth)
+        // 続けてarchiveListに代入する
         this.archiveList.push(archive)
+        // archive/perMonthの初期化
         preYear = year
         preMonth = month
-        archive = { year: preYear, length: 1, monthObjList: [] }
-        monthObj = {
+        archive = { year: preYear, length: 1, perMonthList: [] }
+        perMonth = {
           month: preMonth,
           length: 1,
         }
       }
 
       if (index === this.allContents.length - 1) {
-        archive.monthObjList.push(monthObj)
+        // 最終要素の場合
+        // perMonthListに代入する
+        archive.perMonthList.push(perMonth)
+        // 続けてarchiveListに代入する
         this.archiveList.push(archive)
       }
     })

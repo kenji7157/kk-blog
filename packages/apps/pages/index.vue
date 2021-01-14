@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row>
+    <v-row class="mt-2">
       <v-col
         v-for="(content, index) in contents"
         :key="index"

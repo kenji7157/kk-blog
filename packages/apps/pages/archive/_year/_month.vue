@@ -58,6 +58,7 @@ export default class ArchiveYearMonth extends Vue {
 
   // NOTE:記事一覧ページはSSR不要とする(動的ページとする)
   created() {
+    // 年月ごとの記事を抽出
     this.year = parseInt(this.$route.params.year)
     this.month = parseInt(this.$route.params.month)
     const allContents = Object.values(articleModule.articles)

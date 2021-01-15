@@ -56,6 +56,7 @@
                 :key="j"
                 class="ml-5"
                 link
+                :to="`/archive/${archive.year}/${perMonth.month + 1}`"
               >
                 <v-list-item-content>
                   <span class="ml-8">{{

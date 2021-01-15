@@ -5,7 +5,9 @@
         <nuxt-link :to="'/'">トップページ</nuxt-link>
         <v-icon class="mb-1">mdi-chevron-right</v-icon>
         <!-- カテゴリーをクリックするとカテゴリーで抽出された一覧ページを表示したい -->
-        {{ article.category[0] }}
+        <nuxt-link :to="`/archive/category/${article.category[0]}`"
+          >{{ article.category[0] }}
+        </nuxt-link>
         <v-icon class="mb-1">mdi-chevron-right</v-icon>
         {{ article.title }}
       </h3>

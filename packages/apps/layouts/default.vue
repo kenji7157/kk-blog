@@ -77,6 +77,7 @@
               v-for="(archive, i) in categoryArticleList"
               :key="i"
               link
+              :to="`/archive/category/${archive.category}`"
             >
               <v-list-item-content>
                 <span>{{ `${archive.category} ( ${archive.length} )` }}</span>
@@ -88,6 +89,7 @@
           <v-list-item-content>
             <v-list-item-title>検索</v-list-item-title>
             <hr />
+            <!-- TODO:検索機能は後半に実施する -->
           </v-list-item-content>
         </v-list-item>
         <!-- <v-list-item

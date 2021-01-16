@@ -1,14 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar clipped-right fixed app color="primary">
-      <v-spacer></v-spacer>
-      <v-toolbar-title
-        class="white--text text-h5 font-weight-bold"
-        v-text="'エンジニア覚書 🦒'"
-      />
-      <v-spacer />
-      <v-app-bar-nav-icon color="accent" @click.stop="drawer = !drawer" />
-    </v-app-bar>
+    <the-tool-bar @on-switch="drawer = !drawer" />
     <v-navigation-drawer
       v-model="drawer"
       clipped
@@ -111,9 +103,14 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+import TheToolBar from '@/components/TheToolBar.vue'
 import { articleModule } from '@/store'
 
-@Component
+@Component({
+  components: {
+    TheToolBar,
+  },
+})
 export default class DefaultLayout extends Vue {
   // NOTE: layout配下のコンポーネントはasyncDataメソッドが未定義
   // asyncData()

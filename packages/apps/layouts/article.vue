@@ -1,18 +1,9 @@
 <template>
   <v-app>
-    <v-app-bar :clipped-right="clipped" fixed app color="primary">
-      <v-spacer></v-spacer>
-      <v-toolbar-title
-        class="white--text text-h5 font-weight-bold"
-        v-text="title"
-      />
-      <v-spacer />
-      <v-app-bar-nav-icon color="accent" @click.stop="drawer = !drawer" />
-    </v-app-bar>
+    <the-tool-bar @on-switch="drawer = !drawer" />
     <v-navigation-drawer
       v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
+      clipped
       fixed
       app
       right
@@ -103,9 +94,14 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+import TheToolBar from '@/components/TheToolBar.vue'
 import { articleModule } from '@/store'
 
-@Component
+@Component({
+  components: {
+    TheToolBar,
+  },
+})
 export default class ArticleLayout extends Vue {
   // NOTE: layout配下のコンポーネントはasyncDataメソッドが未定義
   // asyncData()
@@ -117,12 +113,7 @@ export default class ArticleLayout extends Vue {
     return articleModule.getCategoryArticleList
   }
 
-  clipped = true
   drawer = true
-  fixed = false
-  miniVariant = false
-  right = true
-  title = 'エンジニア覚書 🦒 '
 }
 </script>
 <style scoped>

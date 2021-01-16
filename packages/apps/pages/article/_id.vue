@@ -31,8 +31,8 @@
               {{ category }}</v-chip
             >
           </div>
-          <v-card-text class="article">
-            <div v-html="article.body" />
+          <v-card-text class="article black--text">
+            <span v-html="article.body" />
           </v-card-text>
         </v-card>
       </v-col>
@@ -74,16 +74,18 @@ export default class ArticleId extends Vue {
 }
 .article {
   font-size: 16px;
+  font-family: -apple-system, Segoe UI, Helvetica Neue,
+    Hiragino Kaku Gothic ProN, 'メイリオ', meiryo, sans-serif !important;
 }
 
 .article >>> h1 {
   font-size: 1.8em;
   font-weight: bold;
   font-feature-settings: 'palt';
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 0.1em;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 15px;
   margin-top: 2.2em;
-  margin-bottom: 2.4rem;
+  margin-bottom: 20px;
 }
 
 .article >>> h2 {
@@ -91,9 +93,9 @@ export default class ArticleId extends Vue {
   font-weight: bold;
   font-feature-settings: 'palt';
   border-bottom: 1px solid #ddd;
-  padding-bottom: 0.1em;
+  padding-bottom: 15px;
   margin-top: 2.2em;
-  margin-bottom: 2.4rem;
+  margin-bottom: 20px;
 }
 
 .article >>> h3 {
@@ -101,7 +103,7 @@ export default class ArticleId extends Vue {
   font-weight: bold;
   font-feature-settings: 'palt';
   margin-top: 2.2em;
-  margin-bottom: 2.4rem;
+  margin-bottom: 20px;
 }
 
 .article >>> blockquote {
@@ -110,5 +112,12 @@ export default class ArticleId extends Vue {
   padding: 1em;
   padding-right: 0;
   margin: 1.5em 0;
+}
+
+.article >>> pre {
+  background-color: #364549;
+  color: #e3e3e3;
+  margin: 0 -16px;
+  padding: 4px 16px;
 }
 </style>

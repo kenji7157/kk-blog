@@ -1,7 +1,11 @@
 <template>
   <v-container>
     <content-list :contents="contents"></content-list>
-    <the-pager :page="page" :page-length="pageLength"></the-pager>
+    <the-pager
+      :page="page"
+      :page-length="pageLength"
+      :input-page="inputPage"
+    ></the-pager>
   </v-container>
 </template>
 
@@ -24,6 +28,10 @@ export default class PagesIndex extends Vue {
     const contents = allContents.slice(0, 6)
     const pageLength = Math.ceil(allContents.length / 6)
     return { contents, pageLength }
+  }
+
+  inputPage(inputPage: number) {
+    this.$router.push({ path: '/archive', query: { page: String(inputPage) } })
   }
 }
 </script>

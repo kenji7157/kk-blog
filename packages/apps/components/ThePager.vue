@@ -20,9 +20,6 @@ import { Component, Vue, Prop } from 'nuxt-property-decorator'
 export default class ThePager extends Vue {
   @Prop({ type: Number, default: 1 }) page!: number
   @Prop({ type: Number, default: 1 }) pageLength!: number
-
-  inputPage(inputPage: number) {
-    this.$router.push({ path: '/archive', query: { page: String(inputPage) } })
-  }
+  @Prop({ type: Function, required: true }) inputPage!: Function
 }
 </script>

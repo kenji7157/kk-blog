@@ -8,7 +8,11 @@
       </h3>
     </v-row>
     <content-list :contents="contents"></content-list>
-    <the-pager :page="page" :page-length="pageLength"></the-pager>
+    <the-pager
+      :page="page"
+      :page-length="pageLength"
+      :input-page="inputPage"
+    ></the-pager>
   </v-container>
 </template>
 
@@ -47,6 +51,13 @@ export default class ArchiveCategory extends Vue {
     const startIndex = 6 * this.page - 6
     const endIndex = 6 * this.page
     this.contents = filterContents.slice(startIndex, endIndex)
+  }
+
+  inputPage(inputPage: number) {
+    this.$router.push({
+      path: `/archive/category/${this.category}`,
+      query: { page: String(inputPage) },
+    })
   }
 }
 </script>

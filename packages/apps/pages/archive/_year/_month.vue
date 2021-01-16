@@ -4,7 +4,11 @@
       <h3>{{ year }}-{{ ('00' + month).slice(-2) }}-01から1ヶ月間の記事一覧</h3>
     </v-row>
     <content-list :contents="contents"></content-list>
-    <the-pager :page="page" :page-length="pageLength"></the-pager>
+    <the-pager
+      :page="page"
+      :page-length="pageLength"
+      :input-page="inputPage"
+    ></the-pager>
   </v-container>
 </template>
 
@@ -47,6 +51,14 @@ export default class ArchiveYearMonth extends Vue {
     const startIndex = 6 * this.page - 6
     const endIndex = 6 * this.page
     this.contents = filterContents.slice(startIndex, endIndex)
+  }
+
+  // TODO: 年月別のページャーは未実装
+  inputPage(inputPage: number) {
+    this.$router.push({
+      path: `/archive/${this.year}/${this.month}`,
+      query: { page: String(inputPage) },
+    })
   }
 }
 </script>

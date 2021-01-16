@@ -15,12 +15,12 @@
     <v-row class="mt-1 justify-center">
       <v-col class="pa-1" cols="10">
         <v-card class="d-flex flex-column">
-          <v-card-title> {{ article.title }} </v-card-title>
-          <div class="ml-4 mb-2 text-subtitle-2">
-            {{ article.createdAt }}
+          <div class="ml-4 mt-4 text-subtitle-2">
+            {{ article.createdDate }}
           </div>
-          <div class="text-h6">{{ article.category }}</div>
-          <v-card-text class="mt-n3 pb-0">
+          <v-card-title> {{ article.title }} </v-card-title>
+          <div class="ml-4">{{ article.category.join(',') }}</div>
+          <v-card-text class="mt-3 pb-0">
             <div v-html="article.body" />
           </v-card-text>
         </v-card>
@@ -41,7 +41,9 @@ type Article = {
   category: string[]
 }
 
-@Component
+@Component({
+  layout: 'article',
+})
 export default class ArticleId extends Vue {
   asyncData({ route }) {
     const id = route.params.id

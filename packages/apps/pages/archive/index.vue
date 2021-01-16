@@ -1,33 +1,6 @@
 <template>
   <v-container>
-    <v-row class="mt-2">
-      <v-col
-        v-for="(content, index) in contents"
-        :key="index"
-        class="pa-1"
-        cols="4"
-      >
-        <v-card
-          height="300"
-          class="d-flex flex-column"
-          @click="onArticle(content.id)"
-        >
-          <v-img
-            max-height="180"
-            src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-          >
-            <div class="text-h6">{{ content.category.join('/') }}</div>
-          </v-img>
-          <v-card-title> {{ content.title }} </v-card-title>
-          <v-card-text class="mt-n3 pb-0">
-            <div>{{ content.abstract.slice(0, 45) }}...</div>
-          </v-card-text>
-          <div class="mt-auto ml-4 mb-2 text-subtitle-2">
-            {{ content.createdDate }}
-          </div>
-        </v-card>
-      </v-col>
-    </v-row>
+    <content-list :contents="contents"></content-list>
     <the-pager :page="page" :page-length="pageLength"></the-pager>
   </v-container>
 </template>
@@ -35,10 +8,12 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import { articleModule } from '@/store'
+import ContentList from '@/components/ContentList.vue'
 import ThePager from '@/components/ThePager.vue'
 
 @Component({
   components: {
+    ContentList,
     ThePager,
   },
 })
@@ -58,14 +33,6 @@ export default class ArchiveId extends Vue {
     const startIndex = 6 * this.page - 6
     const endIndex = 6 * this.page
     this.contents = allContents.slice(startIndex, endIndex)
-  }
-
-  onArticle(id: string) {
-    this.$router.push(`/article/${id}`)
-  }
-
-  inputPage(inputPage: number) {
-    this.$router.push({ path: '/archive', query: { page: String(inputPage) } })
   }
 }
 </script>

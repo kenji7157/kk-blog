@@ -17,6 +17,7 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import { articleModule } from '@/store'
 import ContentList from '@/components/ContentList.vue'
 import ThePager from '@/components/ThePager.vue'
+import { Article } from 'kk-blog-types'
 
 @Component({
   components: {
@@ -27,7 +28,7 @@ import ThePager from '@/components/ThePager.vue'
 export default class ArchiveId extends Vue {
   page = 1
   pageLength = 0
-  contents = []
+  contents: Article[] = []
 
   // NOTE:記事一覧ページはSSR不要とする(動的ページとする)
   created() {

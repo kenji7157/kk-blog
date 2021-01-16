@@ -50,11 +50,11 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
+import { Article } from 'kk-blog-types'
 
 @Component
 export default class ContentList extends Vue {
-  // TODO:そろそろ型づけをする
-  @Prop({ type: Array, default: () => [] }) contents!: any[]
+  @Prop({ type: Array, default: () => [] }) contents!: Article[]
 
   rowContents(row: number) {
     return row === 1 ? this.contents.slice(0, 3) : this.contents.slice(3, 6)

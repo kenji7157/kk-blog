@@ -17,6 +17,7 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import { articleModule } from '@/store'
 import ContentList from '@/components/ContentList.vue'
 import ThePager from '@/components/ThePager.vue'
+import { Article } from 'kk-blog-types'
 
 @Component({
   components: {
@@ -25,18 +26,18 @@ import ThePager from '@/components/ThePager.vue'
   },
 })
 export default class ArchiveYearMonth extends Vue {
-  year: number
-  month: number
+  year = 0
+  month = 0
   page = 1
   pageLength = 0
-  contents = []
+  contents: Article[] = []
 
   // NOTE:記事一覧ページはSSR不要とする(動的ページとする)
   created() {
     // 年月ごとの記事を抽出
     this.year = parseInt(this.$route.params.year)
     this.month = parseInt(this.$route.params.month)
-    const allContents = Object.values(articleModule.getArticleList)
+    const allContents: Article[] = Object.values(articleModule.getArticleList)
     // 年月でフィルタをかける
     const filterContents = allContents.filter(
       (content) =>

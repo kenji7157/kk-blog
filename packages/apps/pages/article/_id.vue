@@ -42,15 +42,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+import { Article } from 'kk-blog-types'
 import { articleModule } from '@/store'
-
-// TODO: 型定義を共通化してArticleを指定する
-type Article = {
-  id: number
-  title: string
-  body: string
-  category: string[]
-}
 
 @Component({
   layout: 'article',

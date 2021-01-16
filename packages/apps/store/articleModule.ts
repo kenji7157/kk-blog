@@ -5,30 +5,13 @@ import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 import cheerio from 'cheerio'
 import hljs from 'highlight.js'
+import { Article } from 'kk-blog-types'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-// TODO: 型定義したファイルを用意する
-type Article = {
-  // idはkeyとなっているのでフィールドとしては不要かも
-  id: number
-  title: string
-  abstract: string
-  body: string
-  category: string[]
-  createdDate: string
-  createdTimestamp: {
-    unix: number
-    year: number
-    // 0~11 表示する場合は+1する
-    month: number
-    day: number
-  }
-}
-
 @Module({ stateFactory: true, namespaced: true, name: 'articleModule' })
 export default class ArticleModule extends VuexModule {
-  private articles: { [id: string]: Article } = {}
+  articles: { [id: string]: Article } = {}
 
   // 記事一覧用のゲッター
   public get getArticleList() {

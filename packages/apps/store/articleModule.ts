@@ -173,7 +173,11 @@ export default class ArticleModule extends VuexModule {
     })
     article.body = $.html()
     // 作成日をHumanFriendlyにする
-    article.createdDate = article.createdDate.slice(0, 10)
+    const date = new Date(article.createdDate)
+    const year = date.getFullYear()
+    const month = ('00' + date.getMonth() + 1).slice(-2)
+    const day = date.getDate()
+    article.createdDate = year + '年' + month + '月' + day + '日'
     this.articles[article.id] = article
   }
 

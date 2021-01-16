@@ -15,12 +15,14 @@
     <v-row class="mt-1 justify-center">
       <v-col class="pa-1" cols="10">
         <v-card class="d-flex flex-column">
-          <div class="ml-4 mt-4 text-subtitle-2">
+          <div class="ml-4 mt-4 text-subtitle-1">
             {{ article.createdDate }}
           </div>
-          <v-card-title> {{ article.title }} </v-card-title>
+          <v-card-title class="article-title">
+            {{ article.title }}
+          </v-card-title>
           <div class="ml-4">{{ article.category.join(',') }}</div>
-          <v-card-text class="mt-3 pb-0">
+          <v-card-text class="article">
             <div v-html="article.body" />
           </v-card-text>
         </v-card>
@@ -52,3 +54,52 @@ export default class ArticleId extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.article-title {
+  font-size: 40px;
+  font-weight: bold;
+  font-feature-settings: 'palt';
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+.article {
+  font-size: 16px;
+}
+
+.article >>> h1 {
+  font-size: 1.8em;
+  font-weight: bold;
+  font-feature-settings: 'palt';
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.1em;
+  margin-top: 2.2em;
+  margin-bottom: 2.4rem;
+}
+
+.article >>> h2 {
+  font-size: 1.6em;
+  font-weight: bold;
+  font-feature-settings: 'palt';
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.1em;
+  margin-top: 2.2em;
+  margin-bottom: 2.4rem;
+}
+
+.article >>> h3 {
+  font-size: 1.4em;
+  font-weight: bold;
+  font-feature-settings: 'palt';
+  margin-top: 2.2em;
+  margin-bottom: 2.4rem;
+}
+
+.article >>> blockquote {
+  border-left: 5px solid #ddd;
+  color: #777;
+  padding: 1em;
+  padding-right: 0;
+  margin: 1.5em 0;
+}
+</style>

@@ -1,10 +1,13 @@
 <template>
-  <v-app dark>
-    <v-app-bar :clipped-right="clipped" fixed app>
+  <v-app>
+    <v-app-bar :clipped-right="clipped" fixed app color="primary">
       <v-spacer></v-spacer>
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title
+        class="white--text text-h5 font-weight-bold"
+        v-text="title"
+      />
       <v-spacer />
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon color="accent" @click.stop="drawer = !drawer" />
     </v-app-bar>
     <v-navigation-drawer
       v-model="drawer"
@@ -13,6 +16,7 @@
       fixed
       app
       right
+      color="secondary"
     >
       <v-list>
         <v-list-item>
@@ -83,14 +87,16 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-main>
+    <v-main class="main-background">
       <v-container>
         <!-- nuxt-child-key="$route.fullPath" の指定でクエリのサイレンダリングが実行される -->
         <nuxt :nuxt-child-key="$route.fullPath" />
       </v-container>
     </v-main>
-    <v-footer>
-      <span>NAGANO ENGINEER LIFE © kenji kawanobe 2021</span>
+    <v-footer color="primary" class="justify-center">
+      <span class="white--text font-weight-bold">
+        エンジニア覚書 🦒 © kenji kawanobe 2021
+      </span>
     </v-footer>
   </v-app>
 </template>
@@ -119,3 +125,8 @@ export default class ArticleLayout extends Vue {
   title = 'エンジニア覚書 🦒 '
 }
 </script>
+<style scoped>
+.main-background {
+  background-color: #f1f1f2;
+}
+</style>

@@ -13,6 +13,7 @@ type Article = {
   // idはkeyとなっているのでフィールドとしては不要かも
   id: number
   title: string
+  abstract: string
   body: string
   category: string[]
   createdDate: string

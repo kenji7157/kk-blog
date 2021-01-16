@@ -20,7 +20,7 @@
           </v-img>
           <v-card-title> {{ content.title }} </v-card-title>
           <v-card-text class="mt-n3 pb-0">
-            <div>{{ content.body.slice(0, 80) }}...</div>
+            <div>{{ content.abstract.slice(0, 45) }}...</div>
           </v-card-text>
           <div class="mt-auto ml-4 mb-2 text-subtitle-2">
             {{ content.createdAt }}

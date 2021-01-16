@@ -10,6 +10,7 @@
       <!-- <v-btn icon @click.stop="fixed = !fixed">
         <v-icon>mdi-minus</v-icon>
       </v-btn> -->
+      <v-spacer></v-spacer>
       <v-toolbar-title v-text="title" />
       <v-spacer />
       <!-- <v-btn icon @click.stop="rightDrawer = !rightDrawer">
@@ -168,6 +169,6 @@ export default class DefaultLayout extends Vue {
   miniVariant = false
   right = true
   // rightDrawer: false,
-  title = '麒麟が通ります 🦒 '
+  title = 'エンジニア覚書 🦒 '
 }
 </script>

@@ -21,7 +21,16 @@
           <v-card-title class="article-title">
             {{ article.title }}
           </v-card-title>
-          <div class="ml-4">{{ article.category.join(',') }}</div>
+          <div class="ml-4 mt-n6">
+            <v-chip
+              v-for="(category, index) in article.category"
+              :key="index"
+              label
+              class="mr-2 mb-2"
+            >
+              {{ category }}</v-chip
+            >
+          </div>
           <v-card-text class="article">
             <div v-html="article.body" />
           </v-card-text>

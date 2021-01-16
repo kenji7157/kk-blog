@@ -33,7 +33,7 @@ export default class ArchiveId extends Vue {
 
   // NOTE:記事一覧ページはSSR不要とする(動的ページとする)
   created() {
-    const allContents = Object.values(articleModule.getArticleList)
+    const allContents: Article[] = Object.values(articleModule.getArticleList)
     // ページャーの長さ指定
     this.pageLength = Math.ceil(allContents.length / 6)
     // 表示ページ番号の指定

@@ -21,7 +21,7 @@
           </div>
           <div class="text-h6">{{ article.category }}</div>
           <v-card-text class="mt-n3 pb-0">
-            <div>{{ article.body }}</div>
+            <div v-html="article.body" />
           </v-card-text>
         </v-card>
       </v-col>

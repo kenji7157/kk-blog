@@ -22,8 +22,10 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.0",
     "@nuxtjs/axios": "^5.12.2",
+    "cheerio": "^1.0.0-rc.5",
     "core-js": "^3.6.5",
     "dayjs": "^1.10.3",
+    "highlight.js": "^10.5.0",
     "nuxt": "^2.14.6",
     "nuxt-property-decorator": "^2.8.8"
   },

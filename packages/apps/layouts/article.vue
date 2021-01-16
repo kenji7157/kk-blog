@@ -8,11 +8,7 @@
         <nuxt :nuxt-child-key="$route.fullPath" />
       </v-container>
     </v-main>
-    <v-footer color="primary" class="justify-center">
-      <span class="white--text font-weight-bold">
-        エンジニア覚書 🦒 © kenji kawanobe 2021
-      </span>
-    </v-footer>
+    <the-footer :is-default-layout="false" />
   </v-app>
 </template>
 
@@ -20,11 +16,13 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 import TheToolBar from '@/components/TheToolBar.vue'
 import TheNavigationDrawer from '@/components/TheNavigationDrawer.vue'
+import TheFooter from '@/components/TheFooter.vue'
 
 @Component({
   components: {
     TheToolBar,
     TheNavigationDrawer,
+    TheFooter,
   },
 })
 export default class ArticleLayout extends Vue {

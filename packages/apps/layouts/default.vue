@@ -168,6 +168,6 @@ export default class DefaultLayout extends Vue {
   miniVariant = false
   right = true
   // rightDrawer: false,
-  title = 'prcatice site'
+  title = '麒麟が通ります 🦒 '
 }
 </script>

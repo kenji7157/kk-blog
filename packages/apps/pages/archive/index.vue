@@ -28,24 +28,20 @@
         </v-card>
       </v-col>
     </v-row>
-    <v-row class="mt-3">
-      <div class="text-center">
-        <v-pagination
-          v-model="page"
-          :length="pageLength"
-          circle
-          @input="inputPage"
-        ></v-pagination>
-      </div>
-    </v-row>
+    <the-pager :page="page" :page-length="pageLength"></the-pager>
   </v-container>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import { articleModule } from '@/store'
+import ThePager from '@/components/ThePager.vue'
 
-@Component
+@Component({
+  components: {
+    ThePager,
+  },
+})
 export default class ArchiveId extends Vue {
   page = 1
   pageLength = 0

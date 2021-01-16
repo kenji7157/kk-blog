@@ -23,7 +23,7 @@
             <div>{{ content.abstract.slice(0, 45) }}...</div>
           </v-card-text>
           <div class="mt-auto ml-4 mb-2 text-subtitle-2">
-            {{ content.createdAt }}
+            {{ content.createdDate }}
           </div>
         </v-card>
       </v-col>
@@ -49,7 +49,7 @@ import { articleModule } from '@/store'
 export default class PagesIndex extends Vue {
   page = 1
   asyncData() {
-    const allContents = Object.values(articleModule.articles)
+    const allContents = Object.values(articleModule.getArticleList)
     const contents = allContents.slice(0, 6)
     const pageLength = Math.ceil(allContents.length / 6)
     return { contents, pageLength }

@@ -23,7 +23,7 @@
             <div>{{ content.abstract.slice(0, 45) }}...</div>
           </v-card-text>
           <div class="mt-auto ml-4 mb-2 text-subtitle-2">
-            {{ content.createdAt }}
+            {{ content.createdDate }}
           </div>
         </v-card>
       </v-col>
@@ -53,7 +53,7 @@ export default class ArchiveId extends Vue {
 
   // NOTE:記事一覧ページはSSR不要とする(動的ページとする)
   created() {
-    const allContents = Object.values(articleModule.articles)
+    const allContents = Object.values(articleModule.getArticleList)
     // ページャーの長さ指定
     this.pageLength = Math.ceil(allContents.length / 6)
     // 表示ページ番号の指定

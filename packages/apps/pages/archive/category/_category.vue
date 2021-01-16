@@ -30,7 +30,7 @@
             <div>{{ content.abstract.slice(0, 45) }}...</div>
           </v-card-text>
           <div class="mt-auto ml-4 mb-2 text-subtitle-2">
-            {{ content.createdAt }}
+            {{ content.createdDate }}
           </div>
         </v-card>
       </v-col>
@@ -63,15 +63,7 @@ export default class ArchiveCategory extends Vue {
   created() {
     // カテゴリーごとの記事を抽出
     this.category = this.$route.params.category
-    const allContents = Object.values(articleModule.articles)
-    // 作成日が新しいのが先頭に来るようにソートをかける
-    allContents.sort(function (a, b) {
-      if (a.createdTimestamp.unix < b.createdTimestamp.unix) {
-        return 1
-      } else {
-        return -1
-      }
-    })
+    const allContents = Object.values(articleModule.getArticleList)
     // カテゴリでフィルタをかける
     const filterContents = allContents.filter((content) =>
       content.category.includes(this.category)

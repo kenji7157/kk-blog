@@ -30,6 +30,20 @@ type Article = {
 export default class ArticleModule extends VuexModule {
   private articles: { [id: string]: Article } = {}
 
+  // 記事一覧用のゲッター
+  public get getArticleList() {
+    const allContents = Object.values(this.articles)
+    // 作成日が新しいのが先頭に来るようにソートをかける
+    allContents.sort(function (a, b) {
+      if (a.createdTimestamp.unix < b.createdTimestamp.unix) {
+        return 1
+      } else {
+        return -1
+      }
+    })
+    return allContents
+  }
+
   // アーカイブ用のリストゲッター
   public get getArchiveArticleList() {
     const allContents = Object.values(this.articles)
@@ -158,6 +172,8 @@ export default class ArticleModule extends VuexModule {
       $(elm).addClass('hljs')
     })
     article.body = $.html()
+    // 作成日をHumanFriendlyにする
+    article.createdDate = article.createdDate.slice(0, 10)
     this.articles[article.id] = article
   }
 

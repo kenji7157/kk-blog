@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="mb-1">
       <h3>
-        <nuxt-link :to="'/'">トップページ</nuxt-link>
+        <nuxt-link :to="'/'">記事一覧</nuxt-link>
         <v-icon class="mb-1">mdi-chevron-right</v-icon>
         <!-- カテゴリーをクリックするとカテゴリーで抽出された一覧ページを表示したい -->
         <nuxt-link :to="`/archive/category/${article.category[0]}`"

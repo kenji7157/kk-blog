@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="mt-n5">
       <h3>
-        <nuxt-link :to="'/'">トップページ</nuxt-link>
+        <nuxt-link :to="'/'">記事一覧</nuxt-link>
         <v-icon class="mb-1">mdi-chevron-right</v-icon>
         {{ category }}
       </h3>

@@ -1,18 +1,17 @@
 <template>
   <v-app>
-    <v-app-bar :clipped-right="clipped" fixed app color="primary">
+    <v-app-bar clipped-right fixed app color="primary">
       <v-spacer></v-spacer>
       <v-toolbar-title
         class="white--text text-h5 font-weight-bold"
-        v-text="title"
+        v-text="'エンジニア覚書 🦒'"
       />
       <v-spacer />
       <v-app-bar-nav-icon color="accent" @click.stop="drawer = !drawer" />
     </v-app-bar>
     <v-navigation-drawer
       v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
+      clipped
       fixed
       app
       right
@@ -126,12 +125,7 @@ export default class DefaultLayout extends Vue {
     return articleModule.getCategoryArticleList
   }
 
-  clipped = true
-  drawer = false
-  fixed = false
-  miniVariant = false
-  right = true
-  title = 'エンジニア覚書 🦒'
+  drawer = true
 }
 </script>
 <style scoped>

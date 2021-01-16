@@ -118,7 +118,7 @@ export default class ArticleLayout extends Vue {
   }
 
   clipped = true
-  drawer = false
+  drawer = true
   fixed = false
   miniVariant = false
   right = true

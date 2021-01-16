@@ -12,8 +12,8 @@
         {{ article.title }}
       </h3>
     </v-row>
-    <v-row class="mt-1">
-      <v-col class="pa-1" cols="4">
+    <v-row class="mt-1 justify-center">
+      <v-col class="pa-1" cols="10">
         <v-card class="d-flex flex-column">
           <v-card-title> {{ article.title }} </v-card-title>
           <div class="ml-4 mb-2 text-subtitle-2">

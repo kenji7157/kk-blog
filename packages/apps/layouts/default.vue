@@ -83,6 +83,15 @@
             <v-list-item-title>検索</v-list-item-title>
             <hr />
             <!-- TODO:検索機能は後半に実施する -->
+            <v-text-field
+              class="mt-2"
+              append-icon="mdi-magnify"
+              label="記事を検索"
+              single-line
+              clearable
+              flat
+              outlined
+            ></v-text-field>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -128,5 +137,11 @@ export default class DefaultLayout extends Vue {
 <style scoped>
 .main-background {
   background-color: #f1f1f2;
+}
+.search-box {
+  margin: 8px 0;
+  padding: 0 8px;
+  background: rgba(204, 204, 204, 0.25);
+  border-radius: 4px;
 }
 </style>

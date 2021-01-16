@@ -40,7 +40,7 @@ export default class ArchiveCategory extends Vue {
   created() {
     // カテゴリーごとの記事を抽出
     this.category = this.$route.params.category
-    const allContents = Object.values(articleModule.getArticleList)
+    const allContents: Article[] = Object.values(articleModule.getArticleList)
     // カテゴリでフィルタをかける
     const filterContents = allContents.filter((content) =>
       content.category.includes(this.category)

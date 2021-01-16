@@ -18,9 +18,20 @@
         >
           <v-img
             :max-height="$vuetify.breakpoint.xl ? 260 : 180"
-            src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+            :src="require('@/assets/image/giraffe.jpg')"
           >
-            <div class="text-h6">{{ content.category.join('/') }}</div>
+            <div class="text-h6">
+              <v-chip
+                v-for="(category, index_j) in content.category"
+                :key="index_j"
+                label
+                class="mt-1 ml-1 mr-2 mb-2"
+                color="rgba(32,33,3,0.2)"
+                text-color="white"
+              >
+                {{ category }}</v-chip
+              >
+            </div>
           </v-img>
           <v-card-title class="mt-n2">
             {{ content.title }} {{ n }}</v-card-title

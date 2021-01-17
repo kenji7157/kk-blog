@@ -7,7 +7,7 @@
     style="z-index: 4"
   >
     <span class="white--text font-weight-bold">
-      エンジニア覚書 🦒 © kenji7157 2021
+      ブログタイトル 🦒 © kenji7157 2021
     </span>
   </v-footer>
 </template>

@@ -3,7 +3,9 @@
     <v-row class="mt-n5">
       <h3>{{ year }}-{{ ('00' + month).slice(-2) }}-01から1ヶ月間の記事一覧</h3>
     </v-row>
-    <content-list :contents="contents"></content-list>
+    <client-only>
+      <content-list :contents="contents"></content-list>
+    </client-only>
     <the-pager
       :prop-page="page"
       :page-length="pageLength"

@@ -18,8 +18,16 @@ import { Component, Vue, Prop } from 'nuxt-property-decorator'
 
 @Component
 export default class ThePager extends Vue {
-  @Prop({ type: Number, default: 1 }) page!: number
+  @Prop({ type: Number, default: 1 }) propPage!: number
   @Prop({ type: Number, default: 1 }) pageLength!: number
   @Prop({ type: Function, required: true }) inputPage!: Function
+
+  get page(): number {
+    return this.propPage
+  }
+
+  set page(val: number) {
+    this.$emit('on-switch', val)
+  }
 }
 </script>

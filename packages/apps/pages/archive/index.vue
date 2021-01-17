@@ -5,9 +5,10 @@
     </v-row>
     <content-list :contents="contents"></content-list>
     <the-pager
-      :page="page"
+      :prop-page="page"
       :page-length="pageLength"
       :input-page="inputPage"
+      @on-switch="setPage"
     ></the-pager>
   </v-container>
 </template>
@@ -48,6 +49,10 @@ export default class ArchiveId extends Vue {
 
   inputPage(inputPage: number) {
     this.$router.push({ path: '/archive', query: { page: String(inputPage) } })
+  }
+
+  setPage(page: number) {
+    this.page = page
   }
 }
 </script>

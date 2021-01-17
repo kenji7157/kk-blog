@@ -5,9 +5,10 @@
     </v-row>
     <content-list :contents="contents"></content-list>
     <the-pager
-      :page="page"
+      :prop-page="page"
       :page-length="pageLength"
       :input-page="inputPage"
+      @on-switch="setPage"
     ></the-pager>
   </v-container>
 </template>
@@ -63,6 +64,10 @@ export default class ArchiveYearMonth extends Vue {
       path: `/archive/${this.year}/${this.month}`,
       query: { page: String(inputPage) },
     })
+  }
+
+  setPage(page: number) {
+    this.page = page
   }
 }
 </script>

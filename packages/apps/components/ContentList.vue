@@ -33,9 +33,7 @@
               >
             </div>
           </v-img>
-          <v-card-title class="mt-n2">
-            {{ content.title }} {{ n }}</v-card-title
-          >
+          <v-card-title class="mt-n2"> {{ content.title }}</v-card-title>
           <v-card-text class="mt-n3 pb-0">
             <div>{{ content.abstract.slice(0, 45) }}...</div>
           </v-card-text>

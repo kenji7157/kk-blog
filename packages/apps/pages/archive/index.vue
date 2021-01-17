@@ -19,7 +19,6 @@ import { articleModule } from '@/store'
 import ContentList from '@/components/ContentList.vue'
 import ThePager from '@/components/ThePager.vue'
 import { Article } from 'kk-blog-types'
-import { isString } from 'kk-blog-types/TypeGuard'
 
 @Component({
   components: {
@@ -37,10 +36,11 @@ export default class ArchiveId extends Vue {
     const allContents: Article[] = Object.values(articleModule.getArticleList)
     // ページャーの長さ指定
     this.pageLength = Math.ceil(allContents.length / 6)
-    // 表示ページ番号の指定
-    this.page = isString(this.$route.query.page)
-      ? parseInt(this.$route.query.page)
-      : 1
+    // TODO タイプガードを共通化したい
+    this.page =
+      typeof this.$route.query.page === 'string'
+        ? parseInt(this.$route.query.page)
+        : 1
     // 表示記事の抽出
     const startIndex = 6 * this.page - 6
     const endIndex = 6 * this.page

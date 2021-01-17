@@ -38,7 +38,7 @@
               :key="j"
               class="ml-5"
               link
-              :to="`/archive/${archive.year}/${perMonth.month + 1}`"
+              :to="`/archive/${archive.year}/${perMonth.month + 1}/page/1`"
             >
               <v-list-item-content>
                 <span class="ml-8">{{
@@ -57,7 +57,7 @@
             v-for="(archive, i) in categoryArticleList"
             :key="i"
             link
-            :to="`/archive/category/${archive.category}`"
+            :to="`/archive/category/${archive.category}/page/1`"
           >
             <v-list-item-content>
               <span>{{ `${archive.category} ( ${archive.length} )` }}</span>

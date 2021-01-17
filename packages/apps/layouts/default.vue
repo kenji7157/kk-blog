@@ -5,7 +5,7 @@
     <v-main class="main-background">
       <v-container>
         <!-- nuxt-child-key="$route.fullPath" の指定でクエリのサイレンダリングが実行される -->
-        <nuxt :nuxt-child-key="$route.fullPath" />
+        <nuxt v-cloak :nuxt-child-key="$route.fullPath" />
       </v-container>
     </v-main>
     <the-footer :is-default-layout="true" />

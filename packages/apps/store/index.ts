@@ -18,7 +18,6 @@ export const actions: ActionTree<any, any> = {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     server: Context
   ) => {
-    console.log('-- nuxtServerInitの起動 --')
     // articleの初期化
     await server.store.getters[
       'vuexModuleDecorators/articleModule'

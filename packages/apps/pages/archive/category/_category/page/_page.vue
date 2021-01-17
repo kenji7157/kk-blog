@@ -20,7 +20,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import { articleModule } from '@/store'
 import ContentList from '@/components/ContentList.vue'
 import ThePager from '@/components/ThePager.vue'
 import { Article } from '@/types'
@@ -32,37 +31,29 @@ import { Article } from '@/types'
   },
 })
 export default class ArchiveCategory extends Vue {
-  category = ''
-  page = 1
-  pageLength = 0
-  contents: Article[] = []
-
-  // NOTE:記事一覧ページはSSR不要とする(動的ページとする)
-  created() {
+  asyncData({ payload }) {
     // カテゴリーごとの記事を抽出
-    this.category = this.$route.params.category
-    const allContents: Article[] = Object.values(articleModule.getArticleList)
+    const category = payload.category
+    // 表示ページの指定
+    const page = payload.page
+    const allContents: Article[] = payload.allContents
     // カテゴリでフィルタをかける
     const filterContents = allContents.filter((content) =>
-      content.category.includes(this.category)
+      content.category.includes(category)
     )
     // ページャーの長さ指定
-    this.pageLength = Math.ceil(filterContents.length / 6)
-    // TODO タイプガードを共通化したい
-    this.page =
-      typeof this.$route.query.page === 'string'
-        ? parseInt(this.$route.query.page)
-        : 1
+    const pageLength = Math.ceil(filterContents.length / 6)
     // 表示記事の抽出
-    const startIndex = 6 * this.page - 6
-    const endIndex = 6 * this.page
-    this.contents = filterContents.slice(startIndex, endIndex)
+    const startIndex = 6 * page - 6
+    const endIndex = 6 * page
+    const contents = filterContents.slice(startIndex, endIndex)
+    return { category, contents, pageLength, page }
   }
 
   inputPage(inputPage: number) {
+    const category = this.$route.params.category
     this.$router.push({
-      path: `/archive/category/${this.category}`,
-      query: { page: String(inputPage) },
+      path: `/archive/category/${category}/page/${inputPage}`,
     })
   }
 }

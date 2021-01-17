@@ -10,14 +10,12 @@
       :prop-page="page"
       :page-length="pageLength"
       :input-page="inputPage"
-      @on-switch="setPage"
     ></the-pager>
   </v-container>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import { articleModule } from '@/store'
 import ContentList from '@/components/ContentList.vue'
 import ThePager from '@/components/ThePager.vue'
 import { Article } from '@/types'
@@ -29,48 +27,36 @@ import { Article } from '@/types'
   },
 })
 export default class ArchiveYearMonth extends Vue {
-  year = 0
-  month = 0
-  page = 1
-  pageLength = 0
-  contents: Article[] = []
-
-  // NOTE:記事一覧ページはSSR不要とする(動的ページとする)
-  created() {
+  asyncData({ payload }) {
     // 年月ごとの記事を抽出
-    this.year = parseInt(this.$route.params.year)
-    this.month = parseInt(this.$route.params.month)
-    const allContents: Article[] = Object.values(articleModule.getArticleList)
+    const year = payload.year
+    const month = payload.month
+    // 表示ページの指定
+    const page = payload.page
+    const allContents: Article[] = payload.allContents
     // 年月でフィルタをかける
     const filterContents = allContents.filter(
       (content) =>
-        content.createdTimestamp.year === this.year &&
-        content.createdTimestamp.month + 1 === this.month
+        content.createdTimestamp.year === year &&
+        content.createdTimestamp.month === month
     )
     // ページャーの長さ指定
-    this.pageLength = Math.ceil(filterContents.length / 6)
-    // 表示ページ番号の指定
-    // TODO タイプガードを共通化したい
-    this.page =
-      typeof this.$route.query.page === 'string'
-        ? parseInt(this.$route.query.page)
-        : 1
+    const pageLength = Math.ceil(filterContents.length / 6)
+
     // 表示記事の抽出
-    const startIndex = 6 * this.page - 6
-    const endIndex = 6 * this.page
-    this.contents = filterContents.slice(startIndex, endIndex)
+    const startIndex = 6 * page - 6
+    const endIndex = 6 * page
+    const contents = filterContents.slice(startIndex, endIndex)
+    return { year, month: month + 1, contents, pageLength, page }
   }
 
   // TODO: 年月別のページャーは未実装
   inputPage(inputPage: number) {
+    const year = this.$route.params.year
+    const month = this.$route.params.month
     this.$router.push({
-      path: `/archive/${this.year}/${this.month}`,
-      query: { page: String(inputPage) },
+      path: `/archive/${year}/${month}/page/${inputPage}`,
     })
-  }
-
-  setPage(page: number) {
-    this.page = page
   }
 }
 </script>

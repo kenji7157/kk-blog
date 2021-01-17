@@ -89,6 +89,7 @@ export default {
     // https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate/#subfolders
     subFolders: false,
     async routes() {
+      // TODO: メソッドに切り出して整理したい
       const res = await axios.get(
         // your-service-id部分は自分のサービスidに置き換えてください
         'https://kk-nuxt-blog.microcms.io/api/v1/article',
@@ -133,6 +134,7 @@ export default {
           return -1
         }
       })
+      const page = Math.ceil(allContents.length / 6)
       const pages = [
         {
           route: '/',
@@ -142,15 +144,81 @@ export default {
           route: '/archive',
           payload: { allContents },
         },
-        {
-          route: '/archive/page/1',
-          payload: { allContents, page: 1 },
-        },
-        {
-          route: '/archive/page/2',
-          payload: { allContents, page: 2 },
-        },
       ]
+      // STEP1 アーカイブ記事一覧の生成
+      for (let i = 1; i <= page; i++) {
+        pages.push({
+          route: `/archive/page/${i}`,
+          payload: { allContents, page: i },
+        })
+      }
+
+      // STEP2 年月別記事一覧の生成
+      let preYear = allContents[0].createdTimestamp.year
+      let preMonth = allContents[0].createdTimestamp.month
+      let count = 0
+      allContents.forEach((content, index) => {
+        const year = content.createdTimestamp.year
+        const month = content.createdTimestamp.month
+        if (preYear === year && preMonth === month) {
+          count++
+        } else {
+          const page = Math.ceil(count / 6)
+          for (let i = 1; i <= page; i++) {
+            pages.push({
+              route: `/archive/${preYear}/${preMonth + 1}/page/${i}`,
+              payload: {
+                year: preYear,
+                month: preMonth,
+                allContents,
+                page: i,
+              },
+            })
+          }
+          preYear = year
+          preMonth = month
+          count = 1
+        }
+
+        // 最終要素の場合はページ生成する
+        if (index === allContents.length - 1) {
+          const page = Math.ceil(count / 6)
+          for (let i = 1; i <= page; i++) {
+            pages.push({
+              route: `/archive/${preYear}/${preMonth + 1}/page/${i}`,
+              payload: {
+                year: preYear,
+                month: preMonth,
+                allContents,
+                page: i,
+              },
+            })
+          }
+        }
+      })
+
+      // STEP3 カテゴリ別記事一覧の生成
+      // 最初に日本語のカテゴリは全て英語化する
+      const categoryObj = {}
+      allContents.forEach((content) => {
+        content.category.forEach((key) => {
+          categoryObj[key] = categoryObj[key] ? categoryObj[key] + 1 : 1
+        })
+      })
+      Object.keys(categoryObj).forEach((key) => {
+        const page = Math.ceil(categoryObj[key] / 6)
+        for (let i = 1; i <= page; i++) {
+          pages.push({
+            route: `/archive/category/${key}/page/${i}`,
+            payload: {
+              category: key,
+              allContents,
+              page: i,
+            },
+          })
+        }
+      })
+
       return pages
     },
   },

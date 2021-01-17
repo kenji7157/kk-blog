@@ -24,7 +24,7 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import { articleModule } from '@/store'
 import ContentList from '@/components/ContentList.vue'
 import ThePager from '@/components/ThePager.vue'
-import { Article } from 'kk-blog-types'
+import { Article } from '@/types'
 
 @Component({
   components: {

@@ -5,7 +5,7 @@ import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 import cheerio from 'cheerio'
 import hljs from 'highlight.js'
-import { Article } from 'kk-blog-types'
+import { Article } from '@/types'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 

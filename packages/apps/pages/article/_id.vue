@@ -42,7 +42,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import { Article } from 'kk-blog-types'
+import { Article } from '@/types'
 import { articleModule } from '@/store'
 
 @Component({

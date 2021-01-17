@@ -50,7 +50,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
-import { Article } from 'kk-blog-types'
+import { Article } from '@/types'
 
 @Component
 export default class ContentList extends Vue {

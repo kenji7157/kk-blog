@@ -14,7 +14,6 @@
       :prop-page="page"
       :page-length="pageLength"
       :input-page="inputPage"
-      @on-switch="setPage"
     ></the-pager>
   </v-container>
 </template>
@@ -65,10 +64,6 @@ export default class ArchiveCategory extends Vue {
       path: `/archive/category/${this.category}`,
       query: { page: String(inputPage) },
     })
-  }
-
-  setPage(page: number) {
-    this.page = page
   }
 }
 </script>

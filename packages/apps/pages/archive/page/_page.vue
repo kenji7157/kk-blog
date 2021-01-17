@@ -17,6 +17,7 @@ import { Component, Vue } from 'nuxt-property-decorator'
 // import { articleModule } from '@/store'
 import ContentList from '@/components/ContentList.vue'
 import ThePager from '@/components/ThePager.vue'
+// import { Article } from '@/types'
 
 @Component({
   components: {
@@ -26,11 +27,16 @@ import ThePager from '@/components/ThePager.vue'
 })
 export default class PagesIndex extends Vue {
   asyncData({ payload }) {
-    // const allContents = Object.values(articleModule.getArticleList)
+    // const allContents: Article[] = Object.values(articleModule.getArticleList)
     const allContents = payload.allContents
-    const contents = allContents.slice(0, 6)
+    // ページャーの長さ指定
     const pageLength = Math.ceil(allContents.length / 6)
-    const page = 1
+    // 表示ページの指定
+    const page = parseInt(payload.page)
+    // 表示記事の抽出
+    const startIndex = 6 * page - 6
+    const endIndex = 6 * page
+    const contents = allContents.slice(startIndex, endIndex)
     return { contents, pageLength, page }
   }
 

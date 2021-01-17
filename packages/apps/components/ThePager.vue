@@ -26,8 +26,6 @@ export default class ThePager extends Vue {
     return this.propPage
   }
 
-  set page(val: number) {
-    this.$emit('on-switch', val)
-  }
+  set page(val: number) {}
 }
 </script>

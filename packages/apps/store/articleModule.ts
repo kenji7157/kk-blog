@@ -138,7 +138,6 @@ export default class ArticleModule extends VuexModule {
 
   @Mutation
   addPost(article: Article) {
-    // this.articles = [...this.articles, article]
     const dayInfo = dayjs.utc(article.createdDate).tz('Asia/Tokyo')
     article.createdTimestamp = {
       unix: dayInfo.unix(),

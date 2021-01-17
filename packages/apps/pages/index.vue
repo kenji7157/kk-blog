@@ -8,14 +8,13 @@
       :prop-page="page"
       :page-length="pageLength"
       :input-page="inputPage"
-      @on-switch="setPage"
     ></the-pager>
   </v-container>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import { articleModule } from '@/store'
+// import { articleModule } from '@/store'
 import ContentList from '@/components/ContentList.vue'
 import ThePager from '@/components/ThePager.vue'
 
@@ -26,20 +25,18 @@ import ThePager from '@/components/ThePager.vue'
   },
 })
 export default class PagesIndex extends Vue {
-  page = 1
-  asyncData() {
-    const allContents = Object.values(articleModule.getArticleList)
-    const contents = allContents.slice(0, 6)
+  asyncData({ payload }) {
+    // const allContents = Object.values(articleModule.getArticleList)
+    const allContents = payload.allContents
     const pageLength = Math.ceil(allContents.length / 6)
-    return { contents, pageLength }
+    const contents = allContents.slice(0, 6)
+    const page = 1
+
+    return { contents, pageLength, page }
   }
 
   inputPage(inputPage: number) {
-    this.$router.push({ path: '/archive', query: { page: String(inputPage) } })
-  }
-
-  setPage(page: number) {
-    this.page = page
+    this.$router.push({ path: `/archive/page/${String(inputPage)}` })
   }
 }
 </script>

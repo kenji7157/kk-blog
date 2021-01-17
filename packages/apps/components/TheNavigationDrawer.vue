@@ -93,6 +93,10 @@ import { articleModule } from '@/store'
 export default class TheNavigationDrawer extends Vue {
   @Prop({ type: Boolean, default: true }) propDrawer!: boolean
 
+  async fetch() {
+    await articleModule.loadArticles()
+  }
+
   get drawer(): boolean {
     return this.propDrawer
   }

@@ -18,7 +18,7 @@
         >
           <v-img
             :max-height="$vuetify.breakpoint.xl ? 260 : 180"
-            :src="require('@/assets/image/giraffe.jpg')"
+            src="/image/giraffe.jpg"
           >
             <div class="text-h6">
               <v-chip

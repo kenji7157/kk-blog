@@ -13,9 +13,9 @@
           <v-list-item-title>プロフィール</v-list-item-title>
           <hr />
           <v-avatar class="my-2" size="86px" style="overflow: unset">
-            <img class="mr-auto" src="https://placehold.jp/150x150.png" />
+            <img class="mr-auto" src="/image/giraffe_profile.jpg" />
           </v-avatar>
-          <v-list-item-subtitle> 雑食エンジニア。🦒 </v-list-item-subtitle>
+          <v-list-item-subtitle> 紹介文 🦒 </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
       <v-list-item>

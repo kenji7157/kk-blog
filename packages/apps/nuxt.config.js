@@ -84,8 +84,11 @@ export default {
 
   // ページの生成
   generate: {
+    interval: 2000,
+    // page/1でリロードしたさいにpage/1/でindex.htmlを参照しにいくためfalse -> HTMLファイルをルートパスに従って生成
+    // https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate/#subfolders
+    subFolders: false,
     async routes() {
-      console.log('-- generate routes --')
       const res = await axios.get(
         // your-service-id部分は自分のサービスidに置き換えてください
         'https://kk-nuxt-blog.microcms.io/api/v1/article',

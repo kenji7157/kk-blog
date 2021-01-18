@@ -7,9 +7,7 @@
         {{ category }}
       </h3>
     </v-row>
-    <client-only>
-      <content-list :contents="contents"></content-list>
-    </client-only>
+    <content-list :contents="contents"></content-list>
     <the-pager
       :prop-page="page"
       :page-length="pageLength"

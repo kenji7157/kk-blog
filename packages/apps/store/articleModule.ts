@@ -120,9 +120,16 @@ export default class ArticleModule extends VuexModule {
       })
     })
 
-    const categoryList: { category: string; length: number }[] = []
+    const categoryList: {
+      category: string
+      categoryPath: string
+      length: number
+    }[] = []
     Object.keys(categoryObj).forEach((key) => {
-      categoryList.push({ category: key, length: categoryObj[key] })
+      const list = key.split(',')
+      const category = list[list.length - 1]
+      const categoryPath = list[0]
+      categoryList.push({ category, categoryPath, length: categoryObj[key] })
     })
 
     // カテゴリー名で昇順ソートをかける

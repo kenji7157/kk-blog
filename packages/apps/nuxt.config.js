@@ -100,6 +100,8 @@ export default {
       )
       const articles = res.data.contents
       const articleMap = {}
+      // カテゴリパスをキーにとる
+      const categoryMap = {}
       articles.forEach((article) => {
         const dayInfo = dayjs.utc(article.createdDate).tz('Asia/Tokyo')
         article.createdTimestamp = {
@@ -123,6 +125,17 @@ export default {
         const month = ('00' + date.getMonth() + 1).slice(-2)
         const day = date.getDate()
         article.createdDate = year + '年' + month + '月' + day + '日'
+        // カテゴリーのプロパティは変換してアプリ側は管理する
+        article.category.forEach((elm) => {
+          const list = elm.split(',')
+          const key = list[0]
+          categoryMap[key] = list[list.length - 1]
+        })
+        article.categoryPath = article.category.map((elm) => elm.split(',')[0])
+        article.category = article.category.map((elm) => {
+          const list = elm.split(',')
+          return list[list.length - 1]
+        })
         articleMap[article.id] = article
       })
       const allContents = Object.values(articleMap)
@@ -196,22 +209,32 @@ export default {
           }
         }
       })
-
+      console.log('-- categoryMap --', categoryMap)
       // STEP3 カテゴリ別記事一覧の生成
-      // 最初に日本語のカテゴリは全て英語化する
       const categoryObj = {}
       allContents.forEach((content) => {
-        content.category.forEach((key) => {
-          categoryObj[key] = categoryObj[key] ? categoryObj[key] + 1 : 1
+        content.categoryPath.forEach((key) => {
+          categoryObj[key] = categoryObj[key]
+            ? {
+                category: categoryMap[key],
+                count: categoryObj[key].count + 1,
+              }
+            : {
+                category: key,
+                count: 1,
+              }
         })
       })
+
       Object.keys(categoryObj).forEach((key) => {
-        const page = Math.ceil(categoryObj[key] / 6)
+        const page = Math.ceil(categoryObj[key].count / 6)
+        const categoryPath = key
+        const category = categoryObj[key].category
         for (let i = 1; i <= page; i++) {
           pages.push({
-            route: `/archive/category/${key}/page/${i}`,
+            route: `/archive/category/${categoryPath}/page/${i}`,
             payload: {
-              category: key,
+              category,
               allContents,
               page: i,
             },

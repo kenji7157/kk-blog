@@ -4,9 +4,9 @@
       <h3>
         <nuxt-link :to="'/'">記事一覧</nuxt-link>
         <v-icon class="mb-1">mdi-chevron-right</v-icon>
-        <!-- カテゴリーをクリックするとカテゴリーで抽出された一覧ページを表示したい -->
-        <nuxt-link :to="`/archive/category/${article.category[0]}`"
-          >{{ article.category[0] }}
+        <!-- TODO: カテゴリーをクリックするとカテゴリーで抽出された一覧ページを表示したい -->
+        <nuxt-link :to="`/archive/category/${article.categoryPath[0]}`"
+          >{{ article.categoryPath[0] }}
         </nuxt-link>
         <v-icon class="mb-1">mdi-chevron-right</v-icon>
         {{ article.title }}

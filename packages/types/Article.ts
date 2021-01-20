@@ -10,6 +10,8 @@ export type Article = {
   body: string
   /** カテゴリー */
   category: string[]
+  /** カテゴリーパス */
+  categoryPath: string[]
   /** 作成日(ISO) */
   createdDate: string
   /** 作成日のタイムスタンプ */

@@ -57,7 +57,7 @@
             v-for="(archive, i) in categoryArticleList"
             :key="i"
             link
-            :to="`/archive/category/${archive.category}/page/1`"
+            :to="`/archive/category/${archive.categoryPath}/page/1`"
           >
             <v-list-item-content>
               <span>{{ `${archive.category} ( ${archive.length} )` }}</span>

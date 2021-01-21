@@ -4,8 +4,7 @@
       <h3>
         <nuxt-link :to="'/'">記事一覧</nuxt-link>
         <v-icon class="mb-1">mdi-chevron-right</v-icon>
-        <!-- TODO: カテゴリーをクリックするとカテゴリーで抽出された一覧ページを表示したい -->
-        <nuxt-link :to="`/archive/category/${article.categoryPath[0]}`"
+        <nuxt-link :to="`/archive/category/${article.categoryPath[0]}/page/1`"
           >{{ article.categoryPath[0] }}
         </nuxt-link>
         <v-icon class="mb-1">mdi-chevron-right</v-icon>
@@ -43,15 +42,13 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import { Article } from '@/types'
-import { articleModule } from '@/store'
 
 @Component({
   layout: 'article',
 })
 export default class ArticleId extends Vue {
-  asyncData({ route }) {
-    const id = route.params.id
-    const article: Article = articleModule.articles[id]
+  asyncData({ payload }) {
+    const article: Article = payload.article
     return { article }
   }
 }

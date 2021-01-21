@@ -209,7 +209,6 @@ export default {
           }
         }
       })
-      console.log('-- categoryMap --', categoryMap)
       // STEP3 カテゴリ別記事一覧の生成
       const categoryObj = {}
       allContents.forEach((content) => {
@@ -225,7 +224,6 @@ export default {
               }
         })
       })
-
       Object.keys(categoryObj).forEach((key) => {
         const page = Math.ceil(categoryObj[key].count / 6)
         const categoryPath = key
@@ -240,6 +238,17 @@ export default {
             },
           })
         }
+      })
+
+      // STEP4 記事ページの生成
+      allContents.forEach((content) => {
+        const id = content.id
+        pages.push({
+          route: `/article/${id}`,
+          payload: {
+            article: content,
+          },
+        })
       })
 
       return pages

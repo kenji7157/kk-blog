@@ -147,7 +147,7 @@ export default {
           return -1
         }
       })
-      const page = Math.ceil(allContents.length / 6)
+      const page = Math.ceil(allContents.length / 10)
       const pages = [
         {
           route: '/',
@@ -176,7 +176,7 @@ export default {
         if (preYear === year && preMonth === month) {
           count++
         } else {
-          const page = Math.ceil(count / 6)
+          const page = Math.ceil(count / 10)
           for (let i = 1; i <= page; i++) {
             pages.push({
               route: `/archive/${preYear}/${preMonth + 1}/page/${i}`,
@@ -195,7 +195,7 @@ export default {
 
         // 最終要素の場合はページ生成する
         if (index === allContents.length - 1) {
-          const page = Math.ceil(count / 6)
+          const page = Math.ceil(count / 10)
           for (let i = 1; i <= page; i++) {
             pages.push({
               route: `/archive/${preYear}/${preMonth + 1}/page/${i}`,
@@ -225,7 +225,7 @@ export default {
         })
       })
       Object.keys(categoryObj).forEach((key) => {
-        const page = Math.ceil(categoryObj[key].count / 6)
+        const page = Math.ceil(categoryObj[key].count / 10)
         const categoryPath = key
         const category = categoryObj[key].category
         for (let i = 1; i <= page; i++) {

@@ -1,49 +1,55 @@
 <template>
-  <div>
-    <v-row v-for="n in 2" :key="n" :class="n === 1 ? 'mt-3' : 'mt-4'">
-      <v-col
-        v-for="(content, index) in rowContents(n)"
-        :key="index"
-        class="pa-1"
-        cols="12"
-        xl="4"
-        lg="4"
-        md="4"
-        sm="4"
-      >
-        <v-card
-          :height="$vuetify.breakpoint.xl ? 390 : 300"
-          class="d-flex flex-column"
-          @click="onArticle(content.id)"
-        >
-          <v-img
-            :max-height="$vuetify.breakpoint.xl ? 260 : 180"
-            src="/image/giraffe.jpg"
+  <v-row class="mt-1 justify-center">
+    <v-col cols="10">
+      <v-card flat class="pt-1 pb-6">
+        <v-row v-for="n in rows" :key="n" class="mt-1 ml-2 mr-1">
+          <v-col
+            v-for="(content, index) in rowContents(n)"
+            :key="index"
+            class="mr-n1"
+            cols="12"
+            xl="6"
+            lg="6"
+            md="6"
+            sm="6"
           >
-            <div class="text-h6">
-              <v-chip
-                v-for="(category, index_j) in content.category"
-                :key="index_j"
-                label
-                class="mt-1 ml-1 mr-2 mb-2"
-                color="rgba(32,33,3,0.2)"
-                text-color="white"
+            <v-card
+              class="d-flex flex-column"
+              height="350"
+              hover
+              @click="onArticle(content.id)"
+            >
+              <v-img max-height="170 " src="/image/giraffe.jpg">
+                <div class="text-h6">
+                  <v-chip
+                    v-for="(category, index_j) in content.category"
+                    :key="index_j"
+                    label
+                    class="mt-1 ml-1 mr-2 mb-2"
+                    color="rgba(32,33,3,0.2)"
+                    text-color="white"
+                  >
+                    {{ category }}</v-chip
+                  >
+                </div>
+              </v-img>
+              <v-card-title class="mt-n1 font-weight-bold">
+                {{ content.title }}</v-card-title
               >
-                {{ category }}</v-chip
-              >
-            </div>
-          </v-img>
-          <v-card-title class="mt-n2"> {{ content.title }}</v-card-title>
-          <v-card-text class="mt-n3 pb-0">
-            <div>{{ content.abstract.slice(0, 45) }}...</div>
-          </v-card-text>
-          <div class="mt-auto ml-4 mb-1 text-subtitle-2">
-            {{ content.createdDate }}
-          </div>
-        </v-card>
-      </v-col>
-    </v-row>
-  </div>
+              <v-card-subtitle class="pt-1 mb-n2 font-weight-medium">
+                <v-icon small class="mr-1">mdi-calendar-check</v-icon
+                >{{ content.createdDate }}
+              </v-card-subtitle>
+              <v-card-text :style="'overflow: hidden'">
+                <div>{{ content.abstract }}</div>
+                <div class="bottom-box"></div>
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script lang="ts">
@@ -54,8 +60,12 @@ import { Article } from '@/types'
 export default class ContentList extends Vue {
   @Prop({ type: Array, default: () => [] }) contents!: Article[]
 
+  get rows() {
+    return this.contents.length / 2
+  }
+
   rowContents(row: number) {
-    return row === 1 ? this.contents.slice(0, 3) : this.contents.slice(3, 6)
+    return this.contents.slice(0 + 2 * (row - 1), 2 + 2 * (row - 1))
   }
 
   onArticle(id: string) {
@@ -63,3 +73,18 @@ export default class ContentList extends Vue {
   }
 }
 </script>
+<style>
+.bottom-box {
+  position: absolute;
+  top: 305px;
+  left: 0px;
+  width: 100%;
+  height: 45px;
+  border-radius: 30px;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 1) 70%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+</style>

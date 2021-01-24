@@ -43,9 +43,7 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 import { Article } from '@/types'
 
-@Component({
-  layout: 'article',
-})
+@Component
 export default class ArticleId extends Vue {
   asyncData({ payload }) {
     const article: Article = payload.article

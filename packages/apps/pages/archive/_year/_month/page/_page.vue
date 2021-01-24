@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row class="mt-n5">
+    <v-row class="mt-n5 mb-1">
       <h3>{{ year }}-{{ ('00' + month).slice(-2) }}-01から1ヶ月間の記事一覧</h3>
     </v-row>
     <content-list :contents="contents"></content-list>

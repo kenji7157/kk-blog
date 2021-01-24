@@ -8,7 +8,7 @@
         <nuxt v-cloak :nuxt-child-key="$route.fullPath" />
       </v-container>
     </v-main>
-    <the-footer :is-default-layout="true" />
+    <the-footer />
   </v-app>
 </template>
 

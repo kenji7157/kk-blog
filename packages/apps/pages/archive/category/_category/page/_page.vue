@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row class="mt-n5">
+    <v-row class="mt-n5 mb-1">
       <h3>
         <nuxt-link :to="'/'">記事一覧</nuxt-link>
         <v-icon class="mb-1">mdi-chevron-right</v-icon>

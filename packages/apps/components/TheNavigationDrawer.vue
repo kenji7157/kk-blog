@@ -42,7 +42,8 @@
             >
               <v-list-item-content>
                 <span class="ml-8">{{
-                  `${archive.year} / ${perMonth.month + 1} (${perMonth.length})`
+                  `${archive.year} / ${perMonth.month + 1} ( 
+                    ${perMonth.length} )`
                 }}</span>
               </v-list-item-content>
             </v-list-item>

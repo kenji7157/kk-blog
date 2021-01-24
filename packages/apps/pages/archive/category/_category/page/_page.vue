@@ -40,7 +40,7 @@ export default class ArchiveCategory extends Vue {
       content.category.includes(category)
     )
     // ページャーの長さ指定
-    const pageLength = Math.ceil(filterContents.length / 6)
+    const pageLength = Math.ceil(filterContents.length / 10)
     // 表示記事の抽出
     const startIndex = 6 * page - 6
     const endIndex = 6 * page

@@ -39,7 +39,7 @@ export default class ArchiveYearMonth extends Vue {
         content.createdTimestamp.month === month
     )
     // ページャーの長さ指定
-    const pageLength = Math.ceil(filterContents.length / 6)
+    const pageLength = Math.ceil(filterContents.length / 10)
 
     // 表示記事の抽出
     const startIndex = 6 * page - 6

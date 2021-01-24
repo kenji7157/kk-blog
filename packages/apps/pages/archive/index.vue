@@ -14,7 +14,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-// import { articleModule } from '@/store'
 import ContentList from '@/components/ContentList.vue'
 import ThePager from '@/components/ThePager.vue'
 
@@ -26,10 +25,9 @@ import ThePager from '@/components/ThePager.vue'
 })
 export default class PagesIndex extends Vue {
   asyncData({ payload }) {
-    // const allContents = Object.values(articleModule.getArticleList)
     const allContents = payload.allContents
-    const contents = allContents.slice(0, 6)
-    const pageLength = Math.ceil(allContents.length / 6)
+    const contents = allContents.slice(0, 10)
+    const pageLength = Math.ceil(allContents.length / 10)
     const page = 1
     return { contents, pageLength, page }
   }

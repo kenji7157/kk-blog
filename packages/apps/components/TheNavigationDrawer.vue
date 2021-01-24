@@ -7,7 +7,7 @@
     right
     color="secondary"
   >
-    <v-list>
+    <v-list class="mb-5 pb-16">
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title>プロフィール</v-list-item-title>

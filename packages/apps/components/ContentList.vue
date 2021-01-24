@@ -61,7 +61,8 @@ export default class ContentList extends Vue {
   @Prop({ type: Array, default: () => [] }) contents!: Article[]
 
   get rows() {
-    return this.contents.length / 2
+    // NOTE: 1件の場合も対応するため切り上げ
+    return Math.ceil(this.contents.length / 2)
   }
 
   rowContents(row: number) {

@@ -42,8 +42,8 @@ export default class ArchiveYearMonth extends Vue {
     const pageLength = Math.ceil(filterContents.length / 10)
 
     // 表示記事の抽出
-    const startIndex = 6 * page - 6
-    const endIndex = 6 * page
+    const startIndex = 10 * page - 10
+    const endIndex = 10 * page
     const contents = filterContents.slice(startIndex, endIndex)
     return { year, month: month + 1, contents, pageLength, page }
   }

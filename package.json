@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "apps:dev": "npm --prefix 'packages/apps' run dev",
     "apps:generate": "npm --prefix 'packages/apps' run generate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

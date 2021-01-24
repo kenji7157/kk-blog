@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row class="mt-n5 mb-1">
+    <v-row class="mb-1">
       <h3>記事一覧</h3>
     </v-row>
     <content-list :contents="contents"></content-list>

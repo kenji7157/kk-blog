@@ -1,6 +1,6 @@
 <template>
-  <v-footer fixed app class="mb-11" color="rgba(0, 0, 0, 0.0)">
-    <v-row>
+  <v-footer color="rgba(0, 0, 0, 0.0)">
+    <v-row class="mt-2 justify-center">
       <div class="text-center">
         <v-pagination
           v-model="page"

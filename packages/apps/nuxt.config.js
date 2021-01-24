@@ -122,7 +122,7 @@ export default {
         // 作成日をHumanFriendlyにする
         const date = new Date(article.createdDate)
         const year = date.getFullYear()
-        const month = ('00' + date.getMonth() + 1).slice(-2)
+        const month = ('00' + (date.getMonth() + 1)).slice(-2)
         const day = date.getDate()
         article.createdDate = year + '年' + month + '月' + day + '日'
         // カテゴリーのプロパティは変換してアプリ側は管理する

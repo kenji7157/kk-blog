@@ -1,7 +1,11 @@
 <template>
   <v-container>
     <v-row class="mt-n5 mb-1">
-      <h3>{{ year }}-{{ ('00' + month).slice(-2) }}-01から1ヶ月間の記事一覧</h3>
+      <h3>
+        <nuxt-link :to="'/'">記事一覧</nuxt-link>
+        <v-icon class="mb-1">mdi-chevron-right</v-icon>
+        {{ year }}年{{ ('00' + month).slice(-2) }}月
+      </h3>
     </v-row>
     <content-list :contents="contents"></content-list>
     <the-pager

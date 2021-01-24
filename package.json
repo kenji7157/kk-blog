@@ -6,6 +6,7 @@
   "scripts": {
     "apps:dev": "npm --prefix 'packages/apps' run dev",
     "apps:generate": "npm --prefix 'packages/apps' run generate",
+    "apps:start": "npm --prefix 'packages/apps' run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kenji Kawanobe <kawake.kk@gmail.com> (https://github.com/kenji7157)",

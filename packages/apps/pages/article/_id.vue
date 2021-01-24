@@ -12,7 +12,7 @@
       </h3>
     </v-row>
     <v-row class="mt-1 justify-center">
-      <v-col class="pa-1" cols="10">
+      <v-col class="pa-1" cols="12" xl="10" lg="10" md="10" sm="10">
         <v-card flat class="d-flex flex-column">
           <div class="ml-4 mt-4 text-subtitle-1">
             {{ article.createdDate }}

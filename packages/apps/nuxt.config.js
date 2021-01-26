@@ -25,7 +25,10 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['~/node_modules/highlight.js/styles/a11y-dark.css'],
+  css: [
+    'vuetify/dist/vuetify.min.css',
+    '~/node_modules/highlight.js/styles/a11y-dark.css',
+  ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [{ src: '~/plugins/vuetify.ts' }],

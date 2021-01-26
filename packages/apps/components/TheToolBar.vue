@@ -3,7 +3,7 @@
     <v-spacer></v-spacer>
     <v-toolbar-title
       class="white--text text-h5 font-weight-bold"
-      v-text="'ブログタイトル 🦒'"
+      v-text="'Girraffe engineer life 🦒'"
     />
     <v-spacer />
     <v-app-bar-nav-icon color="accent" @click.stop="$emit('on-switch')" />

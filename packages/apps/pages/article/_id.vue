@@ -108,4 +108,8 @@ export default class ArticleId extends Vue {
   margin: 0 -16px;
   padding: 4px 16px;
 }
+
+.article >>> img {
+  max-width: 100%;
+}
 </style>

@@ -15,9 +15,18 @@
           <v-avatar class="my-2" size="86px" style="overflow: unset">
             <img class="mr-auto" src="/image/giraffe_profile.jpg" />
           </v-avatar>
-          <v-list-item-subtitle>
-            JavaScript/TypeScript/Vue/Nuxtにはまっています。
-          </v-list-item-subtitle>
+          <p class="mt-1 text-body-2">Webエンジニア生活の備忘録</p>
+          <div>
+            <v-btn icon @click="openGithubTab">
+              <v-icon size="24px"> mdi-github </v-icon>
+            </v-btn>
+            <v-btn icon @click="openTwitterTab">
+              <v-icon size="24px"> mdi-twitter </v-icon>
+            </v-btn>
+            <v-btn icon @click="openLinkedinTab">
+              <v-icon size="24px"> mdi-linkedin </v-icon>
+            </v-btn>
+          </div>
         </v-list-item-content>
       </v-list-item>
       <v-list-item>
@@ -115,6 +124,18 @@ export default class TheNavigationDrawer extends Vue {
 
   get categoryArticleList() {
     return articleModule.getCategoryArticleList
+  }
+
+  openGithubTab() {
+    window.open('https://github.com/kenji7157', '_blank')
+  }
+
+  openTwitterTab() {
+    window.open('https://twitter.com/kenji7157', '_blank')
+  }
+
+  openLinkedinTab() {
+    window.open('https://www.linkedin.com/in/kenji7157', '_blank')
   }
 }
 </script>

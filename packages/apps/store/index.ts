@@ -18,7 +18,9 @@ export const actions: ActionTree<any, any> = {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     server: Context
   ) => {
+    // NOTE:SSGの場合は静的ページの取得枚に実行している
     // articleの初期化
+    console.log('log nuxtServerInit')
     await server.store.getters[
       'vuexModuleDecorators/articleModule'
     ].loadArticles()

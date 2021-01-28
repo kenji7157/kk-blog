@@ -24,6 +24,10 @@ import ThePager from '@/components/ThePager.vue'
   },
 })
 export default class PagesIndex extends Vue {
+  head() {
+    return { title: '記事一覧 - 1' }
+  }
+
   asyncData({ payload }) {
     const allContents = payload.allContents
     const contents = allContents.slice(0, 10)

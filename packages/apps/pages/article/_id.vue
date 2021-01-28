@@ -42,9 +42,18 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import { Article } from '@/types'
+import { articleModule } from '@/store'
 
 @Component
 export default class ArticleId extends Vue {
+  head() {
+    const articles = articleModule.getArticles
+    console.log(
+      `log check title id_page - ${articles[this.$route.params.id].title}`
+    )
+    return { title: articles[this.$route.params.id].title }
+  }
+
   asyncData({ payload }) {
     const article: Article = payload.article
     return { article }

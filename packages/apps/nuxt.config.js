@@ -14,7 +14,7 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    // titleTemplate: '%s | Giraffe engineer life',
+    titleTemplate: '%s | Giraffe engineer life',
     title: 'Giraffe engineer life',
     meta: [
       { charset: 'utf-8' },

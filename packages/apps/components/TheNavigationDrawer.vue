@@ -106,8 +106,9 @@ export default class TheNavigationDrawer extends Vue {
   @Prop({ type: Boolean, default: true }) propDrawer!: boolean
 
   // NOTE:fetchとasyncDataで記事かけそう
-  async fetch({ store }) {
-    await store.getters['vuexModuleDecorators/articleModule'].loadArticles()
+  async fetch() {
+    // SSGによりページ生成枚にストアの初期化を行うので以下の処理は不要
+    // await store.getters['vuexModuleDecorators/articleModule'].loadArticles()
   }
 
   get drawer(): boolean {

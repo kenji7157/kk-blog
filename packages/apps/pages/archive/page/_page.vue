@@ -24,6 +24,10 @@ import ThePager from '@/components/ThePager.vue'
   },
 })
 export default class PagesIndex extends Vue {
+  head() {
+    return { title: `記事一覧 - ${this.$route.params.page}` }
+  }
+
   asyncData({ payload }) {
     const allContents = payload.allContents
     // ページャーの長さ指定

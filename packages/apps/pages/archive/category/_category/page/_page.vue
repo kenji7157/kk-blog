@@ -29,6 +29,13 @@ import { Article } from '@/types'
   },
 })
 export default class ArchiveCategory extends Vue {
+  head() {
+    return {
+      // TODO: パスでなく、カテゴリ名をheadタグに指定したい
+      title: `${this.$route.params.category}`,
+    }
+  }
+
   asyncData({ payload }) {
     // カテゴリーごとの記事を抽出
     const category = payload.category

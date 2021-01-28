@@ -13,6 +13,11 @@ dayjs.extend(timezone)
 export default class ArticleModule extends VuexModule {
   articles: { [id: string]: Article } = {}
 
+  // 全記事(オブジェクト)のゲッター
+  public get getArticles() {
+    return this.articles
+  }
+
   // 記事一覧用のゲッター
   public get getArticleList() {
     const allContents = Object.values(this.articles)
@@ -172,6 +177,7 @@ export default class ArticleModule extends VuexModule {
 
   @Action
   async loadArticles() {
+    console.log('storeの情報を取得', this.articles)
     const res = await axios.get(
       // your-service-id部分は自分のサービスidに置き換えてください
       'https://kk-nuxt-blog.microcms.io/api/v1/article?limit=100',

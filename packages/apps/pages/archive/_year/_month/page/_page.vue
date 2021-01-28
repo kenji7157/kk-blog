@@ -29,6 +29,13 @@ import { Article } from '@/types'
   },
 })
 export default class ArchiveYearMonth extends Vue {
+  head() {
+    const month = ('00' + this.$route.params.month).slice(-2)
+    return {
+      title: `${this.$route.params.year}年${month}月`,
+    }
+  }
+
   asyncData({ payload }) {
     // 年月ごとの記事を抽出
     const year = payload.year

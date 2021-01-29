@@ -1,10 +1,16 @@
 ---
-name: あCustom issue templateああああ
-about: Describe this issue template's purpose here.
+name: バグ報告
+about: バグ報告のテンプレート
 title: ''
-labels: ''
-assignees: ''
+labels: bug
+assignees: kenji7157
 
 ---
 
+## 事象
 
+## 再現手順
+
+## 原因
+
+## 対応方針

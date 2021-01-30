@@ -14,13 +14,11 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import ContentList from '@/components/ContentList.vue'
-import ThePager from '@/components/ThePager.vue'
 
 @Component({
   components: {
-    ContentList,
-    ThePager,
+    ContentList: () => import('@/components/ContentList.vue'),
+    ThePager: () => import('@/components/ThePager.vue'),
   },
 })
 export default class PagesIndex extends Vue {

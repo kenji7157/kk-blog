@@ -14,15 +14,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import TheToolBar from '@/components/TheToolBar.vue'
-import TheNavigationDrawer from '@/components/TheNavigationDrawer.vue'
-import TheFooter from '@/components/TheFooter.vue'
 
 @Component({
   components: {
-    TheToolBar,
-    TheNavigationDrawer,
-    TheFooter,
+    TheToolBar: () => import('@/components/TheToolBar.vue'),
+    TheNavigationDrawer: () => import('@/components/TheNavigationDrawer.vue'),
+    TheFooter: () => import('@/components/TheFooter.vue'),
   },
 })
 export default class DefaultLayout extends Vue {

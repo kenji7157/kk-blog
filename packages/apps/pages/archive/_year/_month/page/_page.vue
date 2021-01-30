@@ -33,6 +33,18 @@ export default class ArchiveYearMonth extends Vue {
     const month = ('00' + this.$route.params.month).slice(-2)
     return {
       title: `${this.$route.params.year}年${month}月`,
+      meta: [
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `https://giraffe-engineer-life.netlify.app/archive/${this.$route.params.year}/${month}/page/${this.$route.params.page}`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `アーカイブ - ${this.$route.params.year}年${month}月 | Giraffe footprints`,
+        },
+      ],
     }
   }
 

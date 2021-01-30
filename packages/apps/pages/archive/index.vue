@@ -25,7 +25,21 @@ import ThePager from '@/components/ThePager.vue'
 })
 export default class PagesIndex extends Vue {
   head() {
-    return { title: '記事一覧 - 1' }
+    return {
+      title: '記事一覧 - 1',
+      meta: [
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `https://giraffe-engineer-life.netlify.app/archive`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: '記事一覧 - 1 | Giraffe footprints',
+        },
+      ],
+    }
   }
 
   asyncData({ payload }) {

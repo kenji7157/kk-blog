@@ -19,6 +19,7 @@
               hover
               @click="onArticle(content.id)"
             >
+              <!-- TODO: カテゴリごとに画像は変える -->
               <v-img max-height="170 " src="/image/giraffe.jpg">
                 <div class="text-h6">
                   <v-chip

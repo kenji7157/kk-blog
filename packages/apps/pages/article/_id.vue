@@ -67,11 +67,35 @@ export default class ArticleId extends Vue {
   height = 500
 
   head() {
-    const articles = articleModule.getArticles
-    console.log(
-      `log check title id_page - ${articles[this.$route.params.id].title}`
-    )
-    return { title: articles[this.$route.params.id].title }
+    const article = articleModule.getArticles[this.$route.params.id]
+    return {
+      title: article.title,
+      meta: [
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `https://giraffe-engineer-life.netlify.app/article/${article.id}`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `${article.title} | Giraffe footprints`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: article.abstract.slice(0, 80),
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          // TODO: カテゴリごとにOGPの画像は変える
+          content:
+            'https://giraffe-engineer-life.netlify.app/image/giraffe.jpg',
+        },
+      ],
+    }
   }
 
   asyncData({ payload }) {

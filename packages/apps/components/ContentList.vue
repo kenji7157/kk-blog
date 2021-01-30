@@ -51,26 +51,26 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'nuxt-property-decorator'
-import { Article } from '@/types'
+import { Component, Vue, Prop } from 'nuxt-property-decorator';
+import { Article } from '@/types';
 
 @Component
 export default class ContentList extends Vue {
-  @Prop({ type: Array, default: () => [] }) contents!: Article[]
+  @Prop({ type: Array, default: () => [] }) contents!: Article[];
 
-  isActive = false
+  isActive = false;
 
   get rows() {
     // NOTE: 1件の場合も対応するため切り上げ
-    return Math.ceil(this.contents.length / 2)
+    return Math.ceil(this.contents.length / 2);
   }
 
   rowContents(row: number) {
-    return this.contents.slice(0 + 2 * (row - 1), 2 + 2 * (row - 1))
+    return this.contents.slice(0 + 2 * (row - 1), 2 + 2 * (row - 1));
   }
 
   onArticle(id: string) {
-    this.$router.push(`/article/${id}`)
+    this.$router.push(`/article/${id}`);
   }
 }
 </script>

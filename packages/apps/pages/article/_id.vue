@@ -36,7 +36,9 @@
             ></v-btn
           >
           <v-card-text class="mt-4 article black--text">
+            <!-- eslint-disable-next-line vue/no-v-html -->
             <span v-html="article.body" />
+            <!-- TODO:サニタイズ処理を入れる -->
           </v-card-text>
         </v-card>
       </v-col>
@@ -45,9 +47,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
-import { Article } from '@/types'
-import { articleModule } from '@/store'
+import { Component, Vue } from 'nuxt-property-decorator';
+import { Article } from '@/types';
+import { articleModule } from '@/store';
 
 @Component
 export default class ArticleId extends Vue {
@@ -57,7 +59,7 @@ export default class ArticleId extends Vue {
   height = 500
 
   head() {
-    const article = articleModule.getArticles[this.$route.params.id]
+    const article = articleModule.getArticles[this.$route.params.id];
     return {
       title: article.title,
       meta: [
@@ -92,19 +94,19 @@ export default class ArticleId extends Vue {
           }`,
         },
       ],
-    }
+    };
   }
 
   asyncData({ payload }) {
-    const article: Article = payload.article
-    const url = `https://giraffe-engineer-life.netlify.app/article/${article.id}`
-    const hashtags = article.category.join(',')
-    return { article, url, hashtags }
+    const article: Article = payload.article;
+    const url = `https://giraffe-engineer-life.netlify.app/article/${article.id}`;
+    const hashtags = article.category.join(',');
+    return { article, url, hashtags };
   }
 
   mounted() {
-    this.top = (screen.availHeight - this.height) / 2
-    this.left = (screen.availWidth - this.width) / 2
+    this.top = (screen.availHeight - this.height) / 2;
+    this.left = (screen.availWidth - this.width) / 2;
   }
 
   tweet(url: string) {
@@ -112,8 +114,8 @@ export default class ArticleId extends Vue {
       encodeURI(decodeURI(url)),
       'tweetwindow',
       `top=${this.top}, left=${this.left}, width=${this.width}, height=${this.height}, personalbar=0, toolbar=0, scrollbars=1, sizable=1`
-    )
-    return false
+    );
+    return false;
   }
 }
 </script>

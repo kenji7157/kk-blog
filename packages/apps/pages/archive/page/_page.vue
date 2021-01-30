@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator';
 
 @Component({
   components: {
@@ -37,24 +37,24 @@ export default class PagesIndex extends Vue {
           content: `記事一覧 - ${this.$route.params.page} | NAGANO ENGINEER LIFE`,
         },
       ],
-    }
+    };
   }
 
   asyncData({ payload }) {
-    const allContents = payload.allContents
+    const allContents = payload.allContents;
     // ページャーの長さ指定
-    const pageLength = Math.ceil(allContents.length / 10)
+    const pageLength = Math.ceil(allContents.length / 10);
     // 表示ページの指定
-    const page = parseInt(payload.page)
+    const page = parseInt(payload.page);
     // 表示記事の抽出
-    const startIndex = 10 * page - 10
-    const endIndex = 10 * page
-    const contents = allContents.slice(startIndex, endIndex)
-    return { contents, pageLength, page }
+    const startIndex = 10 * page - 10;
+    const endIndex = 10 * page;
+    const contents = allContents.slice(startIndex, endIndex);
+    return { contents, pageLength, page };
   }
 
   inputPage(inputPage: number) {
-    this.$router.push({ path: `/archive/page/${String(inputPage)}` })
+    this.$router.push({ path: `/archive/page/${String(inputPage)}` });
   }
 }
 </script>

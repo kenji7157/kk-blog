@@ -19,12 +19,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
-import ContentList from '@/components/ContentList.vue'
-import ThePager from '@/components/ThePager.vue'
-import { articleModule } from '@/store'
-import { Article } from '@/types'
-import { isString } from '@/types/TypeGuard'
+import { Component, Vue } from 'nuxt-property-decorator';
+import ContentList from '@/components/ContentList.vue';
+import ThePager from '@/components/ThePager.vue';
+import { articleModule } from '@/store';
+import { Article } from '@/types';
+import { isString } from '@/types/TypeGuard';
 
 @Component({
   components: {
@@ -39,21 +39,21 @@ export default class PagesIndex extends Vue {
   page = 1
 
   head() {
-    return { title: '検索記事一覧' }
+    return { title: '検索記事一覧' };
   }
 
   created() {
     // 全角 半角の指定
-    const target = this.$route.query.target
-    const queryPage = this.$route.query.page
-    this.words = isString(target) ? target.split(/[\u{20}\u{3000}]/u) : []
-    this.page = isString(queryPage) ? parseInt(queryPage) : 1
-    const allContents: Article[] = Object.values(articleModule.getArticleList)
+    const target = this.$route.query.target;
+    const queryPage = this.$route.query.page;
+    this.words = isString(target) ? target.split(/[\u{20}\u{3000}]/u) : [];
+    this.page = isString(queryPage) ? parseInt(queryPage) : 1;
+    const allContents: Article[] = Object.values(articleModule.getArticleList);
     allContents.forEach((content) => {
-      content.category = content.category.map((x) => x.split(',')[0])
-    })
+      content.category = content.category.map((x) => x.split(',')[0]);
+    });
     // 抽出処理
-    let filteredContents: Article[] = []
+    let filteredContents: Article[] = [];
     this.words.forEach((word) => {
       filteredContents = filteredContents.concat(
         allContents.filter(
@@ -63,23 +63,23 @@ export default class PagesIndex extends Vue {
               content.body.includes(word)) &&
             !filteredContents.map((x) => x.id).includes(content.id)
         )
-      )
-    })
+      );
+    });
 
-    this.pageLength = Math.ceil(filteredContents.length / 10)
+    this.pageLength = Math.ceil(filteredContents.length / 10);
     this.contents = filteredContents.slice(
       0 + 10 * (this.page - 1),
       10 + 10 * (this.page - 1)
-    )
+    );
   }
 
   inputPage(inputPage: number) {
-    if (this.page === inputPage) return
-    this.page = inputPage
+    if (this.page === inputPage) return;
+    this.page = inputPage;
     this.$router.push({
       path: '/search',
       query: { target: this.$route.query.target, page: String(inputPage) },
-    })
+    });
   }
 }
 </script>

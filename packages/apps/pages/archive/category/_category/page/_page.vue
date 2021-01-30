@@ -17,8 +17,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
-import { Article } from '@/types'
+import { Component, Vue } from 'nuxt-property-decorator';
+import { Article } from '@/types';
 
 @Component({
   components: {
@@ -43,33 +43,33 @@ export default class ArchiveCategory extends Vue {
           content: `カテゴリ - ${this.$route.params.category} | NAGANO ENGINEER LIFE`,
         },
       ],
-    }
+    };
   }
 
   asyncData({ payload }) {
     // カテゴリーごとの記事を抽出
-    const category = payload.category
+    const category = payload.category;
     // 表示ページの指定
-    const page = payload.page
-    const allContents: Article[] = payload.allContents
+    const page = payload.page;
+    const allContents: Article[] = payload.allContents;
     // カテゴリでフィルタをかける
     const filterContents = allContents.filter((content) =>
       content.category.includes(category)
-    )
+    );
     // ページャーの長さ指定
-    const pageLength = Math.ceil(filterContents.length / 10)
+    const pageLength = Math.ceil(filterContents.length / 10);
     // 表示記事の抽出
-    const startIndex = 10 * page - 10
-    const endIndex = 10 * page
-    const contents = filterContents.slice(startIndex, endIndex)
-    return { category, contents, pageLength, page }
+    const startIndex = 10 * page - 10;
+    const endIndex = 10 * page;
+    const contents = filterContents.slice(startIndex, endIndex);
+    return { category, contents, pageLength, page };
   }
 
   inputPage(inputPage: number) {
-    const category = this.$route.params.category
+    const category = this.$route.params.category;
     this.$router.push({
       path: `/archive/category/${category}/page/${inputPage}`,
-    })
+    });
   }
 }
 </script>

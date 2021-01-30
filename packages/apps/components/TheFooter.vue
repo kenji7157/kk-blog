@@ -9,20 +9,20 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator';
 
 @Component
 export default class TheFooter extends Vue {
   openGithubTab() {
-    window.open('https://github.com/kenji7157', '_blank')
+    window.open('https://github.com/kenji7157', '_blank');
   }
 
   openTwitterTab() {
-    window.open('https://twitter.com/kenji7157', '_blank')
+    window.open('https://twitter.com/kenji7157', '_blank');
   }
 
   openLinkedinTab() {
-    window.open('https://www.linkedin.com/in/kenji7157', '_blank')
+    window.open('https://www.linkedin.com/in/kenji7157', '_blank');
   }
 }
 </script>

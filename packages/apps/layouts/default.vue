@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator';
 
 @Component({
   components: {
@@ -28,7 +28,7 @@ export default class DefaultLayout extends Vue {
   drawer = true
 
   setDrawer(drawer: boolean) {
-    this.drawer = drawer
+    this.drawer = drawer;
   }
 }
 </script>

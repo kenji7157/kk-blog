@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'nuxt-property-decorator'
+import { Component, Vue, Prop } from 'nuxt-property-decorator';
 
 @Component
 export default class ThePager extends Vue {
@@ -23,7 +23,7 @@ export default class ThePager extends Vue {
   @Prop({ type: Function, required: true }) inputPage!: Function
 
   get page(): number {
-    return this.propPage
+    return this.propPage;
   }
 
   set page(val: number) {}

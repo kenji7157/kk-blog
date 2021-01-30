@@ -17,8 +17,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
-import { Article } from '@/types'
+import { Component, Vue } from 'nuxt-property-decorator';
+import { Article } from '@/types';
 
 @Component({
   components: {
@@ -28,7 +28,7 @@ import { Article } from '@/types'
 })
 export default class ArchiveYearMonth extends Vue {
   head() {
-    const month = ('00' + this.$route.params.month).slice(-2)
+    const month = ('00' + this.$route.params.month).slice(-2);
     return {
       title: `${this.$route.params.year}年${month}月`,
       meta: [
@@ -43,39 +43,39 @@ export default class ArchiveYearMonth extends Vue {
           content: `アーカイブ - ${this.$route.params.year}年${month}月 | NAGANO ENGINEER LIFE`,
         },
       ],
-    }
+    };
   }
 
   asyncData({ payload }) {
     // 年月ごとの記事を抽出
-    const year = payload.year
-    const month = payload.month
+    const year = payload.year;
+    const month = payload.month;
     // 表示ページの指定
-    const page = payload.page
-    const allContents: Article[] = payload.allContents
+    const page = payload.page;
+    const allContents: Article[] = payload.allContents;
     // 年月でフィルタをかける
     const filterContents = allContents.filter(
       (content) =>
         content.createdTimestamp.year === year &&
         content.createdTimestamp.month === month
-    )
+    );
     // ページャーの長さ指定
-    const pageLength = Math.ceil(filterContents.length / 10)
+    const pageLength = Math.ceil(filterContents.length / 10);
 
     // 表示記事の抽出
-    const startIndex = 10 * page - 10
-    const endIndex = 10 * page
-    const contents = filterContents.slice(startIndex, endIndex)
-    return { year, month: month + 1, contents, pageLength, page }
+    const startIndex = 10 * page - 10;
+    const endIndex = 10 * page;
+    const contents = filterContents.slice(startIndex, endIndex);
+    return { year, month: month + 1, contents, pageLength, page };
   }
 
   // TODO: 年月別のページャーは未実装
   inputPage(inputPage: number) {
-    const year = this.$route.params.year
-    const month = this.$route.params.month
+    const year = this.$route.params.year;
+    const month = this.$route.params.month;
     this.$router.push({
       path: `/archive/${year}/${month}/page/${inputPage}`,
-    })
+    });
   }
 }
 </script>

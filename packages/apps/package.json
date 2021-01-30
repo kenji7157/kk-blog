@@ -7,8 +7,7 @@
     "build": "nuxt-ts build",
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate",
-    "lint:js": "eslint --ext .js,.vue",
-    "lint": "npm run lint:js",
+    "lint": "eslint '**/*.{js,ts,vue}' --config .eslintrc.js --fix",
     "test": "jest"
   },
   "lint-staged": {

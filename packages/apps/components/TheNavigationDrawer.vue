@@ -107,14 +107,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'nuxt-property-decorator'
-import { articleModule } from '@/store'
+import { Component, Vue, Prop } from 'nuxt-property-decorator';
+import { articleModule } from '@/store';
 
 @Component
 export default class TheNavigationDrawer extends Vue {
-  @Prop({ type: Boolean, default: true }) propDrawer!: boolean
+  @Prop({ type: Boolean, default: true }) propDrawer!: boolean;
 
-  target = ''
+  target = '';
 
   // NOTE:fetchとasyncDataで記事かけそう
   async fetch() {
@@ -123,38 +123,38 @@ export default class TheNavigationDrawer extends Vue {
   }
 
   get drawer(): boolean {
-    return this.propDrawer
+    return this.propDrawer;
   }
 
   set drawer(val: boolean) {
-    this.$emit('on-switch', val)
+    this.$emit('on-switch', val);
   }
 
   get archiveArticleList() {
-    return articleModule.getArchiveArticleList
+    return articleModule.getArchiveArticleList;
   }
 
   get categoryArticleList() {
-    return articleModule.getCategoryArticleList
+    return articleModule.getCategoryArticleList;
   }
 
   openGithubTab() {
-    window.open('https://github.com/kenji7157', '_blank')
+    window.open('https://github.com/kenji7157', '_blank');
   }
 
   openTwitterTab() {
-    window.open('https://twitter.com/kenji7157', '_blank')
+    window.open('https://twitter.com/kenji7157', '_blank');
   }
 
   openLinkedinTab() {
-    window.open('https://www.linkedin.com/in/kenji7157', '_blank')
+    window.open('https://www.linkedin.com/in/kenji7157', '_blank');
   }
 
   search(text: string) {
     if (!text) {
-      return
+      return;
     }
-    this.$router.push({ path: '/search', query: { target: text } })
+    this.$router.push({ path: '/search', query: { target: text } });
   }
 }
 </script>

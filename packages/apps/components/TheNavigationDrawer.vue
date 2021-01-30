@@ -12,29 +12,31 @@
         <v-list-item-content>
           <v-list-item-title>プロフィール</v-list-item-title>
           <hr />
-          <v-lazy
-            v-model="isActive"
-            :options="{
-              threshold: 0.5,
-            }"
-            transition="fade-transition"
-          >
-            <v-avatar class="my-2" size="86px" style="overflow: unset">
-              <img class="mr-auto" src="/image/giraffe_profile.jpg" />
-            </v-avatar>
-          </v-lazy>
-          <p class="mt-1 text-body-2">Webエンジニア生活の備忘録</p>
-          <div>
-            <v-btn icon @click="openGithubTab">
-              <v-icon color="black" size="24px"> mdi-github </v-icon>
-            </v-btn>
-            <v-btn icon @click="openTwitterTab">
-              <v-icon color="#1DA1F2" size="24px"> mdi-twitter </v-icon>
-            </v-btn>
-            <v-btn icon @click="openLinkedinTab">
-              <v-icon color="#0A66C2" size="24px"> mdi-linkedin </v-icon>
-            </v-btn>
+          <div class="d-flex align-end">
+            <v-lazy
+              v-model="isActive"
+              :options="{
+                threshold: 0.5,
+              }"
+              transition="fade-transition"
+            >
+              <v-avatar class="my-2" size="86px" style="overflow: unset">
+                <img class="mr-auto" src="/image/giraffe_profile.jpg" />
+              </v-avatar>
+            </v-lazy>
+            <div class="ml-2">
+              <v-btn icon @click="openGithubTab">
+                <v-icon color="black" size="24px"> mdi-github </v-icon>
+              </v-btn>
+              <v-btn icon @click="openTwitterTab">
+                <v-icon color="black" size="24px"> mdi-twitter </v-icon>
+              </v-btn>
+              <v-btn icon @click="openLinkedinTab">
+                <v-icon color="black" size="24px"> mdi-linkedin </v-icon>
+              </v-btn>
+            </div>
           </div>
+          <div class="mt-1 text-body-2">日々の学びの備忘録。</div>
         </v-list-item-content>
       </v-list-item>
       <v-list-item>

@@ -42,20 +42,20 @@ export default {
       {
         hid: 'og:description',
         property: 'og:description',
-        content: 'Webエンジニア生活の備忘録🦒',
+        content: '日々の学びの備忘録。',
       },
       {
         hid: 'og:image',
         property: 'og:image',
         // TODO: デフォルトの画像は用意しておく
-        content: 'https://nagano-engineer-life.netlify.app/image/giraffe.png',
+        content: 'https://nagano-engineer-life.netlify.app/image/site.png',
       },
       { name: 'twitter:card', content: 'summary_large_image' },
       { hid: 'twitter:site', name: 'twitter:site', content: '@kenji7157' },
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: 'https://nagano-engineer-life.netlify.app/image/giraffe.png',
+        content: 'https://nagano-engineer-life.netlify.app/image/site.png',
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],

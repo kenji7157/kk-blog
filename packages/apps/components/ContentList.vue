@@ -1,6 +1,6 @@
 <template>
   <v-row class="mt-1 justify-center">
-    <v-col class="pa-1" cols="12" xl="10" lg="10" md="10" sm="10">
+    <v-col class="pa-1" :class="{'px-10': !$vuetify.breakpoint.xs}" cols="12" xl="10" lg="10" md="10" sm="10">
       <v-card flat class="pt-1 pb-6">
         <v-row v-for="n in rows" :key="n" class="mt-1 ml-2 mr-1">
           <v-col

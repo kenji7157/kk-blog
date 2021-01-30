@@ -1,4 +1,3 @@
-import colors from 'vuetify/es5/util/colors'
 import axios from 'axios'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
@@ -59,6 +58,7 @@ export default {
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
     // vuetifyの反映が遅いので最初のcss読み込みに追加
+    '@mdi/font/css/materialdesignicons.css',
     'vuetify/dist/vuetify.min.css',
     '~/node_modules/highlight.js/styles/a11y-dark.css',
   ],
@@ -98,40 +98,32 @@ export default {
   axios: {},
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
-  // vuetify: {
-  //   customVariables: ['~/assets/variables.scss'],
-  //   theme: {
-  //     dark: false,
-  //     themes: {
-  //       dark: {
-  //         primary: colors.blue.darken2,
-  //         accent: colors.grey.darken3,
-  //         secondary: colors.amber.darken3,
-  //         info: colors.teal.lighten1,
-  //         warning: colors.amber.base,
-  //         error: colors.deepOrange.accent4,
-  //         success: colors.green.accent3,
-  //       },
-  //       /* 以下追加 */
-  //       light: {
-  //         primary: '#000000',
-  //         accent: '#FFFFFF',
-  //         secondary: '#F8F8FD',
-  //         info: colors.teal.lighten1,
-  //         warning: colors.amber.base,
-  //         error: colors.deepOrange.accent4,
-  //         success: colors.green.accent3,
-  //       },
-  //     },
-  //   },
-  // },
+  vuetify: {
+    customVariables: ['~/assets/variables.scss'],
+    defaultAssets: false,
+    theme: {
+      dark: false,
+      themes: {
+        /* 以下追加 */
+        light: {
+          primary: '#000000',
+          accent: '#FFFFFF',
+          secondary: '#F8F8FD',
+          info: '#000000',
+          warning: '#000000',
+          error: '#000000',
+          success: '#000000',
+        },
+      },
+    },
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
 
   // ページの生成
   generate: {
-    interval: 2000,
+    interval: 1500,
     // page/1でリロードしたさいにpage/1/でindex.htmlを参照しにいくためfalse -> HTMLファイルをルートパスに従って生成
     // https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate/#subfolders
     subFolders: false,

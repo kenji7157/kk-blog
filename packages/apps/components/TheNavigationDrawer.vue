@@ -81,8 +81,8 @@
         <v-list-item-content>
           <v-list-item-title>検索</v-list-item-title>
           <hr />
-          <!-- TODO:検索機能は後半に実施する -->
           <v-text-field
+            v-model="target"
             class="mt-2"
             append-icon="mdi-magnify"
             label="記事を検索"
@@ -90,6 +90,7 @@
             clearable
             flat
             outlined
+            @click:append="search(target)"
           ></v-text-field>
         </v-list-item-content>
       </v-list-item>
@@ -104,6 +105,8 @@ import { articleModule } from '@/store'
 @Component
 export default class TheNavigationDrawer extends Vue {
   @Prop({ type: Boolean, default: true }) propDrawer!: boolean
+
+  target = ''
 
   // NOTE:fetchとasyncDataで記事かけそう
   async fetch() {
@@ -137,6 +140,13 @@ export default class TheNavigationDrawer extends Vue {
 
   openLinkedinTab() {
     window.open('https://www.linkedin.com/in/kenji7157', '_blank')
+  }
+
+  search(text: string) {
+    if (!text) {
+      return
+    }
+    this.$router.push({ path: '/search', query: { target: text } })
   }
 }
 </script>

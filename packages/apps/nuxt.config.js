@@ -58,6 +58,7 @@ export default {
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
     // vuetifyの反映が遅いので最初のcss読み込みに追加
+    '@mdi/font/css/materialdesignicons.css',
     'vuetify/dist/vuetify.min.css',
     '~/node_modules/highlight.js/styles/a11y-dark.css',
   ],
@@ -99,6 +100,7 @@ export default {
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    defaultAssets: false,
     theme: {
       dark: false,
       themes: {

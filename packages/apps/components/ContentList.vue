@@ -20,20 +20,28 @@
               @click="onArticle(content.id)"
             >
               <!-- TODO: カテゴリごとに画像は変える -->
-              <v-img max-height="170 " src="/image/giraffe.jpg">
-                <div class="text-h6">
-                  <v-chip
-                    v-for="(category, index_j) in content.category"
-                    :key="index_j"
-                    label
-                    class="mt-1 ml-1 mr-2 mb-2"
-                    color="rgba(32,33,3,0.2)"
-                    text-color="white"
-                  >
-                    {{ category }}</v-chip
-                  >
-                </div>
-              </v-img>
+              <v-lazy
+                v-model="isActive"
+                :options="{
+                  threshold: 0.5,
+                }"
+                transition="fade-transition"
+              >
+                <v-img max-height="170 " src="/image/giraffe.jpg">
+                  <div class="text-h6">
+                    <v-chip
+                      v-for="(category, index_j) in content.category"
+                      :key="index_j"
+                      label
+                      class="mt-1 ml-1 mr-2 mb-2"
+                      color="rgba(32,33,3,0.2)"
+                      text-color="white"
+                    >
+                      {{ category }}</v-chip
+                    >
+                  </div>
+                </v-img>
+              </v-lazy>
               <v-card-title class="mt-n1 font-weight-bold">
                 {{ content.title }}</v-card-title
               >
@@ -60,6 +68,8 @@ import { Article } from '@/types'
 @Component
 export default class ContentList extends Vue {
   @Prop({ type: Array, default: () => [] }) contents!: Article[]
+
+  isActive = false
 
   get rows() {
     // NOTE: 1件の場合も対応するため切り上げ

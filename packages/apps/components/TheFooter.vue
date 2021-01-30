@@ -14,7 +14,7 @@
       </v-card-text>
       <v-divider></v-divider>
       <v-card-text class="white--text font-weight-bold pt-0">
-        ©Copyright2021 Giraffe engineer life.All Rights Reserved.
+        ©Copyright2021 Giraffe footprints.All Rights Reserved.
       </v-card-text>
     </v-card>
   </v-footer>

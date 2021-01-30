@@ -14,18 +14,30 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import ContentList from '@/components/ContentList.vue'
-import ThePager from '@/components/ThePager.vue'
 
 @Component({
   components: {
-    ContentList,
-    ThePager,
+    ContentList: () => import('@/components/ContentList.vue'),
+    ThePager: () => import('@/components/ThePager.vue'),
   },
 })
 export default class PagesIndex extends Vue {
   head() {
-    return { title: `記事一覧 - ${this.$route.params.page}` }
+    return {
+      title: `記事一覧 - ${this.$route.params.page}`,
+      meta: [
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `https://giraffe-engineer-life.netlify.app/archive/page/${this.$route.params.page}`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `記事一覧 - ${this.$route.params.page} | Giraffe footprints`,
+        },
+      ],
+    }
   }
 
   asyncData({ payload }) {

@@ -18,13 +18,13 @@
           <p class="mt-1 text-body-2">Webエンジニア生活の備忘録</p>
           <div>
             <v-btn icon @click="openGithubTab">
-              <v-icon size="24px"> mdi-github </v-icon>
+              <v-icon color="black" size="24px"> mdi-github </v-icon>
             </v-btn>
             <v-btn icon @click="openTwitterTab">
-              <v-icon size="24px"> mdi-twitter </v-icon>
+              <v-icon color="#1DA1F2" size="24px"> mdi-twitter </v-icon>
             </v-btn>
             <v-btn icon @click="openLinkedinTab">
-              <v-icon size="24px"> mdi-linkedin </v-icon>
+              <v-icon color="#0A66C2" size="24px"> mdi-linkedin </v-icon>
             </v-btn>
           </div>
         </v-list-item-content>

@@ -30,6 +30,21 @@
               {{ category }}</v-chip
             >
           </div>
+          <v-btn
+            class="ml-4 mt-2"
+            width="160"
+            color="#1DA1F2"
+            @click="
+              tweet(
+                `https://twitter.com/intent/tweet?text=${article.title}&url=${url}&hashtags=${hashtags}&via=kenji7157&related=kenji7157`
+              )
+            "
+          >
+            <v-icon color="white">mdi-twitter</v-icon
+            ><span class="white--text font-weight-bold ml-1"
+              >ツイート</span
+            ></v-btn
+          >
           <v-card-text class="article black--text">
             <span v-html="article.body" />
           </v-card-text>
@@ -46,17 +61,62 @@ import { articleModule } from '@/store'
 
 @Component
 export default class ArticleId extends Vue {
+  top = 0
+  left = 0
+  width = 550
+  height = 500
+
   head() {
-    const articles = articleModule.getArticles
-    console.log(
-      `log check title id_page - ${articles[this.$route.params.id].title}`
-    )
-    return { title: articles[this.$route.params.id].title }
+    const article = articleModule.getArticles[this.$route.params.id]
+    return {
+      title: article.title,
+      meta: [
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `https://giraffe-engineer-life.netlify.app/article/${article.id}`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `${article.title} | Giraffe footprints`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: article.abstract.slice(0, 80),
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          // TODO: カテゴリごとにOGPの画像は変える
+          content:
+            'https://giraffe-engineer-life.netlify.app/image/giraffe.jpg',
+        },
+      ],
+    }
   }
 
   asyncData({ payload }) {
     const article: Article = payload.article
-    return { article }
+    const url = `https://giraffe-engineer-life.netlify.app/article/${article.id}`
+    const hashtags = article.category.join(',')
+    return { article, url, hashtags }
+  }
+
+  mounted() {
+    this.top = (screen.availHeight - this.height) / 2
+    this.left = (screen.availWidth - this.width) / 2
+  }
+
+  tweet(url: string) {
+    window.open(
+      encodeURI(decodeURI(url)),
+      'tweetwindow',
+      `top=${this.top}, left=${this.left}, width=${this.width}, height=${this.height}, personalbar=0, toolbar=0, scrollbars=1, sizable=1`
+    )
+    return false
   }
 }
 </script>

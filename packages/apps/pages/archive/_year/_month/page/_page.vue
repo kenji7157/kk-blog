@@ -18,14 +18,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import ContentList from '@/components/ContentList.vue'
-import ThePager from '@/components/ThePager.vue'
 import { Article } from '@/types'
 
 @Component({
   components: {
-    ContentList,
-    ThePager,
+    ContentList: () => import('@/components/ContentList.vue'),
+    ThePager: () => import('@/components/ThePager.vue'),
   },
 })
 export default class ArchiveYearMonth extends Vue {
@@ -33,6 +31,18 @@ export default class ArchiveYearMonth extends Vue {
     const month = ('00' + this.$route.params.month).slice(-2)
     return {
       title: `${this.$route.params.year}年${month}月`,
+      meta: [
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `https://giraffe-engineer-life.netlify.app/archive/${this.$route.params.year}/${month}/page/${this.$route.params.page}`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `アーカイブ - ${this.$route.params.year}年${month}月 | Giraffe footprints`,
+        },
+      ],
     }
   }
 

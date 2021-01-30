@@ -18,14 +18,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import ContentList from '@/components/ContentList.vue'
-import ThePager from '@/components/ThePager.vue'
 import { Article } from '@/types'
 
 @Component({
   components: {
-    ContentList,
-    ThePager,
+    ContentList: () => import('@/components/ContentList.vue'),
+    ThePager: () => import('@/components/ThePager.vue'),
   },
 })
 export default class ArchiveCategory extends Vue {
@@ -33,6 +31,18 @@ export default class ArchiveCategory extends Vue {
     return {
       // TODO: パスでなく、カテゴリ名をheadタグに指定したい
       title: `${this.$route.params.category}`,
+      meta: [
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `https://giraffe-engineer-life.netlify.app/archive/category/${this.$route.params.category}/page/${this.$route.params.page}`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `カテゴリ - ${this.$route.params.category} | Giraffe footprints`,
+        },
+      ],
     }
   }
 

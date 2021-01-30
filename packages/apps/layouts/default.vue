@@ -27,10 +27,6 @@ export default class DefaultLayout extends Vue {
   // asyncData()
   drawer = true
 
-  created() {
-    this.drawer = true
-  }
-
   setDrawer(drawer: boolean) {
     this.drawer = drawer
   }

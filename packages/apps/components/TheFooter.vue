@@ -1,18 +1,6 @@
 <template>
   <v-footer color="primary" class="justify-center" style="z-index: 4">
     <v-card flat color="primary" class="white--text text-center">
-      <v-card-text class="pa-2">
-        <v-btn class="mx-4 white--text" icon @click="openGithubTab">
-          <v-icon size="38px"> mdi-github </v-icon>
-        </v-btn>
-        <v-btn class="mx-4 white--text" icon @click="openTwitterTab">
-          <v-icon size="38px"> mdi-twitter </v-icon>
-        </v-btn>
-        <v-btn class="mx-4 white--text" icon @click="openLinkedinTab">
-          <v-icon size="38px"> mdi-linkedin </v-icon>
-        </v-btn>
-      </v-card-text>
-      <v-divider></v-divider>
       <v-card-text class="white--text font-weight-bold pt-0">
         ©Copyright2021 NAGANO ENGINEER LIFE.All Rights Reserved.
       </v-card-text>

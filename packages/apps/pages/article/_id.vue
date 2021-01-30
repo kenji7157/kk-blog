@@ -20,18 +20,8 @@
           <v-card-title class="article-title">
             {{ article.title }}
           </v-card-title>
-          <div class="ml-4 mt-n6">
-            <v-chip
-              v-for="(category, index) in article.category"
-              :key="index"
-              label
-              class="mr-2 mb-2"
-            >
-              {{ category }}</v-chip
-            >
-          </div>
           <v-btn
-            class="ml-4 mt-2"
+            class="ml-4"
             width="160"
             color="#1DA1F2"
             @click="
@@ -45,7 +35,7 @@
               >ツイート</span
             ></v-btn
           >
-          <v-card-text class="article black--text">
+          <v-card-text class="mt-4 article black--text">
             <span v-html="article.body" />
           </v-card-text>
         </v-card>
@@ -90,16 +80,16 @@ export default class ArticleId extends Vue {
         {
           hid: 'og:image',
           property: 'og:image',
-          // TODO: カテゴリごとにOGPの画像は変える
-          content:
-            'https://giraffe-engineer-life.netlify.app/image/giraffe.png',
+          content: `https://placehold.jp/140/000000/ffffff/1000x672.png?text=${
+            article.category[0].split(',')[0]
+          }`,
         },
         {
           hid: 'twitter:image',
           name: 'twitter:image',
-          // TODO: カテゴリごとにOGPの画像は変える
-          content:
-            'https://giraffe-engineer-life.netlify.app/image/giraffe.png',
+          content: `https://placehold.jp/140/000000/ffffff/1000x672.png?text=${
+            article.category[0].split(',')[0]
+          }`,
         },
       ],
     }

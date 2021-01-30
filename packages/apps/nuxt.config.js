@@ -262,7 +262,7 @@ export default {
                 count: categoryObj[key].count + 1,
               }
             : {
-                category: key,
+                category: categoryMap[key],
                 count: 1,
               }
         })

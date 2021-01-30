@@ -28,7 +28,7 @@
               >
                 <v-img
                   max-height="170 "
-                  :src="`/image/${content.category[0]}.jpg`"
+                  :src="`https://placehold.jp/140/000000/ffffff/1000x672.png?text=${content.categoryPath[0]}`"
                 />
               </v-lazy>
               <v-card-title class="mt-n1 font-weight-bold">

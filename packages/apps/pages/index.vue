@@ -29,7 +29,7 @@ export default class PagesIndex extends Vue {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: '記事一覧 | Giraffe footprints',
+          content: '記事一覧 | NAGANO ENGINEER LIFE',
         },
       ],
     }

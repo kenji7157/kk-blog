@@ -80,7 +80,7 @@ export default class ArticleId extends Vue {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `${article.title} | Giraffe footprints`,
+          content: `${article.title} | NAGANO ENGINEER LIFE`,
         },
         {
           hid: 'og:description',

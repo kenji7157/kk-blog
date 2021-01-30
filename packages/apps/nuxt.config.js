@@ -17,8 +17,8 @@ export default {
       lang: 'ja',
       prefix: 'og: http://ogp.me/ns#',
     },
-    titleTemplate: '%s | Giraffe footprints',
-    title: 'Giraffe footprints',
+    titleTemplate: '%s | NAGANO ENGINEER LIFE',
+    title: 'NAGANO ENGINEER LIFE',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -37,7 +37,7 @@ export default {
       {
         hid: 'og:title',
         property: 'og:title',
-        content: 'Giraffe footprints',
+        content: 'NAGANO ENGINEER LIFE',
       },
       {
         hid: 'og:description',

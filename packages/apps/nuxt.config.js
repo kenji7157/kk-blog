@@ -100,7 +100,7 @@ export default {
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
-    defaultAssets: false,
+    defaultAssets: { font: true, icons: false },
     theme: {
       dark: false,
       themes: {
@@ -123,7 +123,7 @@ export default {
 
   // ページの生成
   generate: {
-    interval: 1500,
+    interval: 2000,
     // page/1でリロードしたさいにpage/1/でindex.htmlを参照しにいくためfalse -> HTMLファイルをルートパスに従って生成
     // https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate/#subfolders
     subFolders: false,

@@ -28,7 +28,7 @@ export default class DefaultLayout extends Vue {
   drawer = true
 
   created() {
-    this.drawer = !this.$vuetify.breakpoint.xs
+    this.drawer = true
   }
 
   setDrawer(drawer: boolean) {

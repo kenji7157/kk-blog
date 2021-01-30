@@ -51,6 +51,12 @@ export default {
         content: 'https://giraffe-engineer-life.netlify.app/image/giraffe.jpg',
       },
       { name: 'twitter:card', content: 'summary_large_image' },
+      { hid: 'twitter:site', name: 'twitter:site', content: '@kenji7157' },
+      {
+        hid: 'twitter:image',
+        name: 'twitter:image',
+        content: 'https://giraffe-engineer-life.netlify.app/image/giraffe.jpg',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },

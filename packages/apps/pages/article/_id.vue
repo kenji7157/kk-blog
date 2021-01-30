@@ -5,7 +5,7 @@
         <nuxt-link :to="'/'">記事一覧</nuxt-link>
         <v-icon class="mb-1">mdi-chevron-right</v-icon>
         <nuxt-link :to="`/archive/category/${article.categoryPath[0]}/page/1`"
-          >{{ article.categoryPath[0] }}
+          >{{ article.category[0] }}
         </nuxt-link>
         <v-icon class="mb-1">mdi-chevron-right</v-icon>
         {{ article.title }}

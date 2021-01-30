@@ -19,7 +19,6 @@
               hover
               @click="onArticle(content.id)"
             >
-              <!-- TODO: カテゴリごとに画像は変える -->
               <v-lazy
                 v-model="isActive"
                 :options="{
@@ -27,20 +26,8 @@
                 }"
                 transition="fade-transition"
               >
-                <v-img max-height="170 " src="/image/giraffe.jpg">
-                  <div class="text-h6">
-                    <v-chip
-                      v-for="(category, index_j) in content.category"
-                      :key="index_j"
-                      label
-                      class="mt-1 ml-1 mr-2 mb-2"
-                      color="rgba(32,33,3,0.2)"
-                      text-color="white"
-                    >
-                      {{ category }}</v-chip
-                    >
-                  </div>
-                </v-img>
+                <!-- TODO: カテゴリごとに画像は変える -->
+                <v-img max-height="170 " src="/image/JavaScript.jpg" />
               </v-lazy>
               <v-card-title class="mt-n1 font-weight-bold">
                 {{ content.title }}</v-card-title

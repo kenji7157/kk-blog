@@ -92,7 +92,14 @@ export default class ArticleId extends Vue {
           property: 'og:image',
           // TODO: カテゴリごとにOGPの画像は変える
           content:
-            'https://giraffe-engineer-life.netlify.app/image/giraffe.jpg',
+            'https://giraffe-engineer-life.netlify.app/image/giraffe.png',
+        },
+        {
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          // TODO: カテゴリごとにOGPの画像は変える
+          content:
+            'https://giraffe-engineer-life.netlify.app/image/giraffe.png',
         },
       ],
     }

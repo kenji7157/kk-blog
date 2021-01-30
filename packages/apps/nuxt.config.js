@@ -48,14 +48,14 @@ export default {
         hid: 'og:image',
         property: 'og:image',
         // TODO: デフォルトの画像は用意しておく
-        content: 'https://giraffe-engineer-life.netlify.app/image/giraffe.jpg',
+        content: 'https://giraffe-engineer-life.netlify.app/image/giraffe.png',
       },
       { name: 'twitter:card', content: 'summary_large_image' },
       { hid: 'twitter:site', name: 'twitter:site', content: '@kenji7157' },
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: 'https://giraffe-engineer-life.netlify.app/image/giraffe.jpg',
+        content: 'https://giraffe-engineer-life.netlify.app/image/giraffe.png',
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],

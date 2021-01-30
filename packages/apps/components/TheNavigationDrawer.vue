@@ -12,9 +12,17 @@
         <v-list-item-content>
           <v-list-item-title>プロフィール</v-list-item-title>
           <hr />
-          <v-avatar class="my-2" size="86px" style="overflow: unset">
-            <img class="mr-auto" src="/image/giraffe_profile.jpg" />
-          </v-avatar>
+          <v-lazy
+            v-model="isActive"
+            :options="{
+              threshold: 0.5,
+            }"
+            transition="fade-transition"
+          >
+            <v-avatar class="my-2" size="86px" style="overflow: unset">
+              <img class="mr-auto" src="/image/giraffe_profile.jpg" />
+            </v-avatar>
+          </v-lazy>
           <p class="mt-1 text-body-2">Webエンジニア生活の備忘録</p>
           <div>
             <v-btn icon @click="openGithubTab">

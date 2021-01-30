@@ -26,8 +26,10 @@
                 }"
                 transition="fade-transition"
               >
-                <!-- TODO: カテゴリごとに画像は変える -->
-                <v-img max-height="170 " src="/image/JavaScript.jpg" />
+                <v-img
+                  max-height="170 "
+                  :src="`/image/${content.category[0]}.jpg`"
+                />
               </v-lazy>
               <v-card-title class="mt-n1 font-weight-bold">
                 {{ content.title }}</v-card-title

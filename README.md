@@ -55,3 +55,8 @@ https://www.figma.com/file/VCOPYhlLWG18MMXkbGgUiU/%E3%83%96%E3%83%AD%E3%82%B0%E3
 
 ## vuexにて vuex-module-decoratorsの導入
 参考記事：https://qiita.com/suzukenz/items/0b5c0eb5196646599377
+
+## アイキャッチ画像について
+- フォントはTimes
+- 大きさは140pt
+- templateをつかう

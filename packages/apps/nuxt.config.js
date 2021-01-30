@@ -96,12 +96,32 @@ export default {
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
 
+  // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
+  vuetify: {
+    customVariables: ['~/assets/variables.scss'],
+    theme: {
+      dark: false,
+      themes: {
+        /* 以下追加 */
+        light: {
+          primary: '#000000',
+          accent: '#FFFFFF',
+          secondary: '#F8F8FD',
+          info: '#000000',
+          warning: '#000000',
+          error: '#000000',
+          success: '#000000',
+        },
+      },
+    },
+  },
+
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
 
   // ページの生成
   generate: {
-    interval: 2000,
+    interval: 1500,
     // page/1でリロードしたさいにpage/1/でindex.htmlを参照しにいくためfalse -> HTMLファイルをルートパスに従って生成
     // https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate/#subfolders
     subFolders: false,

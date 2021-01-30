@@ -26,13 +26,13 @@ export default {
       {
         hid: 'og:site_name',
         property: 'og:site_name',
-        content: 'Giraffe footprints🦒',
+        content: 'NAGANO ENGINEER LIFE',
       },
       { hid: 'og:type', property: 'og:type', content: 'website' },
       {
         hid: 'og:url',
         property: 'og:url',
-        content: 'https://giraffe-engineer-life.netlify.app/',
+        content: 'https://nagano-engineer-life.netlify.app/',
       },
       {
         hid: 'og:title',
@@ -48,14 +48,14 @@ export default {
         hid: 'og:image',
         property: 'og:image',
         // TODO: デフォルトの画像は用意しておく
-        content: 'https://giraffe-engineer-life.netlify.app/image/giraffe.png',
+        content: 'https://nagano-engineer-life.netlify.app/image/giraffe.png',
       },
       { name: 'twitter:card', content: 'summary_large_image' },
       { hid: 'twitter:site', name: 'twitter:site', content: '@kenji7157' },
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: 'https://giraffe-engineer-life.netlify.app/image/giraffe.png',
+        content: 'https://nagano-engineer-life.netlify.app/image/giraffe.png',
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],

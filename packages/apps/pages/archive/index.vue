@@ -29,7 +29,7 @@ export default class PagesIndex extends Vue {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: `https://giraffe-engineer-life.netlify.app/archive`,
+          content: `https://nagano-engineer-life.netlify.app/archive`,
         },
         {
           hid: 'og:title',

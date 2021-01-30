@@ -35,7 +35,7 @@ export default class ArchiveYearMonth extends Vue {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: `https://giraffe-engineer-life.netlify.app/archive/${this.$route.params.year}/${month}/page/${this.$route.params.page}`,
+          content: `https://nagano-engineer-life.netlify.app/archive/${this.$route.params.year}/${month}/page/${this.$route.params.page}`,
         },
         {
           hid: 'og:title',

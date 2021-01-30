@@ -67,7 +67,7 @@ export default class ArticleId extends Vue {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: `https://giraffe-engineer-life.netlify.app/article/${article.id}`,
+          content: `https://nagano-engineer-life.netlify.app/article/${article.id}`,
         },
         {
           hid: 'og:title',
@@ -99,7 +99,7 @@ export default class ArticleId extends Vue {
 
   asyncData({ payload }) {
     const article: Article = payload.article;
-    const url = `https://giraffe-engineer-life.netlify.app/article/${article.id}`;
+    const url = `https://nagano-engineer-life.netlify.app/article/${article.id}`;
     const hashtags = article.category.join(',');
     return { article, url, hashtags };
   }

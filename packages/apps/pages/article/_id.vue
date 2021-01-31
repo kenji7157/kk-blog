@@ -50,6 +50,7 @@
 import { Component, Vue } from 'nuxt-property-decorator';
 import { Article } from '@/types';
 import { articleModule } from '@/store';
+import  hljs  from '@/utils/highlight';
 
 @Component
 export default class ArticleId extends Vue {
@@ -105,6 +106,7 @@ export default class ArticleId extends Vue {
   }
 
   mounted() {
+    hljs.initHighlighting();
     this.top = (screen.availHeight - this.height) / 2;
     this.left = (screen.availWidth - this.width) / 2;
   }

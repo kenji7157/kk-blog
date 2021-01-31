@@ -2,8 +2,6 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
-import cheerio from 'cheerio';
-import  hljs  from './utils/highlight';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
@@ -151,15 +149,6 @@ export default {
           month: dayInfo.month(),
           day: dayInfo.date(),
         };
-        // コードのシンタックスハイライトを設定する
-        // https://microcms.io/blog/syntax-highlighting-on-server-side/
-        const $ = cheerio.load(article.body);
-        $('pre code').each((_, elm) => {
-          const result = hljs.highlightAuto($(elm).text());
-          $(elm).html(result.value);
-          $(elm).addClass('hljs');
-        });
-        article.body = $.html();
         // 作成日をHumanFriendlyにする
         const date = new Date(article.createdDate);
         const year = date.getFullYear();

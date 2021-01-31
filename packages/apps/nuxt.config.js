@@ -63,8 +63,6 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
-    // vuetifyの反映が遅いので最初のcss読み込みに追加
-    'vuetify/dist/vuetify.min.css',
     '~/node_modules/highlight.js/styles/a11y-dark.css',
   ],
 

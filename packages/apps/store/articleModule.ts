@@ -4,8 +4,8 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import cheerio from 'cheerio';
-import hljs from 'highlight.js';
 import { Article } from '@/types';
+import  hljs  from '@/utils/highlight';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 

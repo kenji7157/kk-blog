@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import cheerio from 'cheerio';
-import hljs from 'highlight.js';
+import  hljs  from './utils/highlight';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
@@ -63,8 +63,6 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
-    // vuetifyの反映が遅いので最初のcss読み込みに追加
-    'vuetify/dist/vuetify.min.css',
     '~/node_modules/highlight.js/styles/a11y-dark.css',
   ],
 

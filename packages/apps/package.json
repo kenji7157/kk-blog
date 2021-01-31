@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "nuxt-ts",
     "build": "nuxt-ts build",
+    "analyze": "nuxt-ts build --analyze",
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate",
     "lint": "eslint '**/*.{js,ts,vue}' --config .eslintrc.js --fix",

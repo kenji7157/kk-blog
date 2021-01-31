@@ -34,7 +34,7 @@ export default class PagesIndex extends Vue {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `記事一覧 - ${this.$route.params.page} | NAGANO ENGINEER LIFE`,
+          content: `記事一覧 - ${this.$route.params.page} | 長野エンジニアライフ`,
         },
       ],
     };

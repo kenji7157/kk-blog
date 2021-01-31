@@ -17,8 +17,8 @@ export default {
       lang: 'ja',
       prefix: 'og: http://ogp.me/ns#',
     },
-    titleTemplate: '%s | NAGANO ENGINEER LIFE',
-    title: 'NAGANO ENGINEER LIFE',
+    titleTemplate: '%s | 長野エンジニアライフ',
+    title: '長野エンジニアライフ',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -26,7 +26,7 @@ export default {
       {
         hid: 'og:site_name',
         property: 'og:site_name',
-        content: 'NAGANO ENGINEER LIFE',
+        content: '長野エンジニアライフ',
       },
       { hid: 'og:type', property: 'og:type', content: 'website' },
       {
@@ -37,7 +37,7 @@ export default {
       {
         hid: 'og:title',
         property: 'og:title',
-        content: 'NAGANO ENGINEER LIFE',
+        content: '長野エンジニアライフ',
       },
       {
         hid: 'og:description',
@@ -48,14 +48,14 @@ export default {
         hid: 'og:image',
         property: 'og:image',
         // TODO: デフォルトの画像は用意しておく
-        content: 'https://nagano-engineer-life.netlify.app/image/site_picuter.png',
+        content: 'https://nagano-engineer-life.netlify.app/image/site_card.png',
       },
       { name: 'twitter:card', content: 'summary_large_image' },
       { hid: 'twitter:site', name: 'twitter:site', content: '@kenji7157' },
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: 'https://nagano-engineer-life.netlify.app/image/site_picuter.png',
+        content: 'https://nagano-engineer-life.netlify.app/image/site_card.png',
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],

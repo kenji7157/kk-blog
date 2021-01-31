@@ -40,7 +40,7 @@ export default class ArchiveCategory extends Vue {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `カテゴリ - ${this.$route.params.category} | NAGANO ENGINEER LIFE`,
+          content: `カテゴリ - ${this.$route.params.category} | 長野エンジニアライフ`,
         },
       ],
     };

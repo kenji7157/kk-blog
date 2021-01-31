@@ -2,7 +2,7 @@
   <v-footer color="primary" class="justify-center" style="z-index: 4">
     <v-card flat color="primary" class="white--text text-center">
       <v-card-text class="white--text font-weight-bold pt-0">
-        ©Copyright2021 NAGANO ENGINEER LIFE.All Rights Reserved.
+        ©Copyright2021 長野エンジニアライフ.All Rights Reserved.
       </v-card-text>
     </v-card>
   </v-footer>

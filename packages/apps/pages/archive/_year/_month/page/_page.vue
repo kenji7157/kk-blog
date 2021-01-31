@@ -40,7 +40,7 @@ export default class ArchiveYearMonth extends Vue {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `アーカイブ - ${this.$route.params.year}年${month}月 | NAGANO ENGINEER LIFE`,
+          content: `アーカイブ - ${this.$route.params.year}年${month}月 | 長野エンジニアライフ`,
         },
       ],
     };

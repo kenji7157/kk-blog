@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <no-ssr>
+    <client-only>
       <v-row class="mb-1">
         <h3>
           <nuxt-link :to="'/'">記事一覧</nuxt-link>
@@ -14,7 +14,7 @@
         :page-length="pageLength"
         :input-page="inputPage"
       ></the-pager>
-    </no-ssr>
+    </client-only>
   </v-container>
 </template>
 
@@ -50,7 +50,7 @@ export default class PagesIndex extends Vue {
     this.page = isString(queryPage) ? parseInt(queryPage) : 1;
     const allContents: Article[] = Object.values(articleModule.getArticleList);
     allContents.forEach((content) => {
-      content.category = content.category.map((x) => x.split(',')[0]);
+      content.categoryPath = content.category.map((x) => x.split(',')[0]);
     });
     // 抽出処理
     let filteredContents: Article[] = [];

@@ -13,15 +13,15 @@
     </v-row>
     <v-row class="mt-1 justify-center">
       <v-col class="pa-1" :class="{'px-10': !$vuetify.breakpoint.xs}" cols="12" xl="10" lg="10" md="10" sm="10">
-        <v-card flat class="d-flex flex-column">
+        <v-card flat class="d-flex flex-column px-4 py-2">
           <div class="ml-4 mt-4 text-subtitle-1">
             {{ article.createdDate }}
           </div>
-          <v-card-title class="article-title">
+          <v-card-title class="article-title mt-n3">
             {{ article.title }}
           </v-card-title>
           <v-btn
-            class="ml-4"
+            class="ml-4 mt-n5 mb-4"
             width="160"
             color="#1DA1F2"
             @click="
@@ -35,6 +35,7 @@
               >ツイート</span
             ></v-btn
           >
+          <hr>
           <v-card-text class="mt-4 article black--text">
             <!-- eslint-disable-next-line vue/no-v-html -->
             <span v-html="article.body" />
@@ -172,11 +173,21 @@ export default class ArticleId extends Vue {
   margin: 1.5em 0;
 }
 
+.article >>> code {
+  background-color: #EEEEEE;
+  font-weight: bold;
+}
+
 .article >>> pre {
   background-color: #364549;
   color: #e3e3e3;
-  margin: 0 -16px;
-  padding: 4px 16px;
+  margin: 16px -32px;
+  padding: 16px 32px;
+}
+
+.article >>> pre > code {
+  background-color: #364549;
+  font-weight: bold;
 }
 
 .article >>> img {

@@ -63,7 +63,7 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
-    '~/node_modules/highlight.js/styles/a11y-dark.css',
+    '~/node_modules/highlight.js/styles/atom-one-dark.css',
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
